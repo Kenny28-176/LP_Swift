@@ -60,9 +60,128 @@ t_DOT = r'\.'
 # ======================= Fin aporte: Kenny Chung ========================
 
 # ===================== Inicio aporte: Miguel Medina =====================
-# Pendiente. Tokens asignados: if, else, identificadores, literales (INT,
-# DOUBLE, STRING, true, false, nil), operadores aritméticos, de asignación,
-# de comparación y lógicos, ??, print, readLine, { } y comentarios.
+reserved.update({
+    'if': 'IF',
+    'else': 'ELSE',
+    'true': 'TRUE',
+    'false': 'FALSE',
+    'nil': 'NIL',
+    'print': 'PRINT',
+    'readLine': 'READLINE',
+    'Int': 'TIPO',          # los tipos de dato comparten un mismo token
+    'Double': 'TIPO',
+    'String': 'TIPO',
+    'Bool': 'TIPO',
+    'Character': 'TIPO',
+    'switch': 'SWITCH',
+    'case': 'CASE',
+    'default': 'DEFAULT',
+    'break': 'BREAK',
+    'continue': 'CONTINUE',
+})
+
+tokens += [
+    'ID',
+    # Literales
+    'INT',
+    'DOUBLE',
+    'STRING',
+    # Aritméticos
+    'PLUS',
+    'MINUS',
+    'TIMES',
+    'DIVIDE',
+    'MOD',
+    # Asignación
+    'ASSIGN',
+    'PLUS_ASSIGN',
+    'MINUS_ASSIGN',
+    'TIMES_ASSIGN',
+    'DIVIDE_ASSIGN',
+    # Comparación
+    'EQ',
+    'NE',
+    'LT',
+    'GT',
+    'LE',
+    'GE',
+    # Lógicos
+    'AND',
+    'OR',
+    'NOT',
+    # Coalescencia de nil
+    'NIL_COALESCING',
+    # Delimitadores
+    'LBRACE',
+    'RBRACE',
+    'SEMICOLON',
+]
+
+# Operadores y delimitadores. PLY ordena las reglas de cadena de mayor a
+# menor longitud, así '==' se prueba antes que '=' y '+=' antes que '+'.
+t_PLUS = r'\+'
+t_MINUS = r'-'
+t_TIMES = r'\*'
+t_DIVIDE = r'/'
+t_MOD = r'%'
+
+t_ASSIGN = r'='
+t_PLUS_ASSIGN = r'\+='
+t_MINUS_ASSIGN = r'-='
+t_TIMES_ASSIGN = r'\*='
+t_DIVIDE_ASSIGN = r'/='
+
+t_EQ = r'=='
+t_NE = r'!='
+t_LT = r'<'
+t_GT = r'>'
+t_LE = r'<='
+t_GE = r'>='
+
+t_AND = r'&&'
+t_OR = r'\|\|'
+t_NOT = r'!'
+
+t_NIL_COALESCING = r'\?\?'
+
+t_LBRACE = r'\{'
+t_RBRACE = r'\}'
+t_SEMICOLON = r';'
+
+
+# Los comentarios son funciones para que se evalúen antes que DIVIDE.
+# No retornan nada, así que se descartan.
+def t_COMMENT_MULTILINE(t):
+    r'/\*(.|\n)*?\*/'
+    t.lexer.lineno += t.value.count('\n')
+
+
+def t_COMMENT(t):
+    r'//.*'
+
+
+def t_ID(t):
+    r'[a-zA-Z_][a-zA-Z0-9_]*'
+    t.type = reserved.get(t.value, 'ID')
+    return t
+
+
+# DOUBLE va antes que INT; si no, '3.14' se partiría en INT DOT INT.
+def t_DOUBLE(t):
+    r'\d+\.\d+'
+    t.value = float(t.value)
+    return t
+
+
+def t_INT(t):
+    r'\d+'
+    t.value = int(t.value)
+    return t
+
+
+def t_STRING(t):
+    r'"([^"\n]|\\.)*"'
+    return t
 # ====================== Fin aporte: Miguel Medina =======================
 
 # ---------------------------------------------------------------------------
