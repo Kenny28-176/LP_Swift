@@ -1,0 +1,1383 @@
+Análisis léxico de Swift (PLY)
+Desarrollador: KennyChung
+Archivo: algoritmos/algoritmo_KennyChung.swift
+Fecha: 01-11-2026 15:17
+
+TOKENS RECONOCIDOS (135)
+   #  Línea  Columna  Token             Lexema
+   1      2       38  COLON             :
+   2      2       59  COMMA             ,
+   3      2       67  COMMA             ,
+   4      3       54  DOT               .
+   5      5       10  COLON             :
+   6      6       15  COLON             :
+   7      6       27  DOT               .
+   8      7       19  COLON             :
+   9     10       11  COLON             :
+  10     10       13  LPAREN            (
+  11     10       20  COMMA             ,
+  12     10       25  COMMA             ,
+  13     10       31  RPAREN            )
+  14     10       35  LPAREN            (
+  15     10       41  COMMA             ,
+  16     10       45  COMMA             ,
+  17     10       51  RPAREN            )
+  18     11       17  COLON             :
+  19     11       19  LPAREN            (
+  20     11       23  COMMA             ,
+  21     11       31  RPAREN            )
+  22     11       35  LPAREN            (
+  23     11       37  COMMA             ,
+  24     11       40  DOT               .
+  25     11       42  RPAREN            )
+  26     14       13  LPAREN            (
+  27     14       20  COLON             :
+  28     14       43  RPAREN            )
+  29     14       45  ARROW             ->
+  30     15       17  COMMA             ,
+  31     19       13  LPAREN            (
+  32     19       18  COLON             :
+  33     19       26  COMMA             ,
+  34     19       34  COLON             :
+  35     19       46  DOT               .
+  36     19       48  RPAREN            )
+  37     19       50  ARROW             ->
+  38     19       53  LPAREN            (
+  39     19       60  COMMA             ,
+  40     19       66  RPAREN            )
+  41     20       12  LPAREN            (
+  42     20       17  COMMA             ,
+  43     20       33  RPAREN            )
+  44     24       21  LPAREN            (
+  45     24       27  COLON             :
+  46     24       36  RPAREN            )
+  47     24       38  ARROW             ->
+  48     25       10  COLON             :
+  49     27       14  LPAREN            (
+  50     27       23  COMMA             ,
+  51     27       26  RPAREN            )
+  52     33        6  LPAREN            (
+  53     33       14  LPAREN            (
+  54     33       15  RPAREN            )
+  55     33       16  RPAREN            )
+  56     34        6  LPAREN            (
+  57     34       14  LPAREN            (
+  58     34       21  COLON             :
+  59     34       29  DOT               .
+  60     34       31  RPAREN            )
+  61     34       32  RPAREN            )
+  62     35        6  LPAREN            (
+  63     35       13  COLON             :
+  64     35       15  COMMA             ,
+  65     35       22  COMMA             ,
+  66     35       31  COLON             :
+  67     35       33  COMMA             ,
+  68     35       41  DOT               .
+  69     35       43  COMMA             ,
+  70     35       59  COLON             :
+  71     35       61  COMMA             ,
+  72     35       69  DOT               .
+  73     35       71  RPAREN            )
+  74     37       16  COLON             :
+  75     38       12  COLON             :
+  76     39        9  COLON             :
+  77     39       21  DOT               .
+  78     40        9  COLON             :
+  79     40       21  DOT               .
+  80     42       10  LPAREN            (
+  81     42       20  COMMA             ,
+  82     42       29  COMMA             ,
+  83     42       36  COLON             :
+  84     42       38  COMMA             ,
+  85     42       44  RPAREN            )
+  86     44       14  DOT               .
+  87     48       13  COLON             :
+  88     48       32  DOT               .
+  89     49       14  COLON             :
+  90     49       16  LPAREN            (
+  91     49       23  COMMA             ,
+  92     49       29  RPAREN            )
+  93     49       40  LPAREN            (
+  94     49       45  COLON             :
+  95     49       55  COMMA             ,
+  96     49       63  COLON             :
+  97     49       75  RPAREN            )
+  98     50       24  COLON             :
+  99     50       26  LPAREN            (
+ 100     50       33  COMMA             ,
+ 101     50       39  RPAREN            )
+ 102     50       50  LPAREN            (
+ 103     50       55  COLON             :
+ 104     50       58  DOT               .
+ 105     50       60  RPAREN            )
+ 106     52        6  LPAREN            (
+ 107     52       16  COLON             :
+ 108     52       18  COMMA             ,
+ 109     52       29  DOT               .
+ 110     52       31  COMMA             ,
+ 111     52       44  COLON             :
+ 112     52       46  COMMA             ,
+ 113     52       57  DOT               .
+ 114     52       59  RPAREN            )
+ 115     53        6  LPAREN            (
+ 116     53       13  DOT               .
+ 117     53       23  COLON             :
+ 118     53       25  COMMA             ,
+ 119     53       46  DOT               .
+ 120     53       48  RPAREN            )
+ 121     54        6  LPAREN            (
+ 122     54       21  COLON             :
+ 123     54       23  COMMA             ,
+ 124     54       37  DOT               .
+ 125     54       39  COMMA             ,
+ 126     54       46  COMMA             ,
+ 127     54       60  DOT               .
+ 128     54       62  RPAREN            )
+ 129     56       13  COLON             :
+ 130     56       36  LPAREN            (
+ 131     56       37  RPAREN            )
+ 132     57        6  LPAREN            (
+ 133     57       24  COLON             :
+ 134     57       26  COMMA             ,
+ 135     57       36  RPAREN            )
+
+ERRORES LÉXICOS (1239)
+Error léxico: carácter no reconocido '/' en la línea 1, columna 1.
+Error léxico: carácter no reconocido '/' en la línea 1, columna 2.
+Error léxico: carácter no reconocido 'A' en la línea 1, columna 4.
+Error léxico: carácter no reconocido 'l' en la línea 1, columna 5.
+Error léxico: carácter no reconocido 'g' en la línea 1, columna 6.
+Error léxico: carácter no reconocido 'o' en la línea 1, columna 7.
+Error léxico: carácter no reconocido 'r' en la línea 1, columna 8.
+Error léxico: carácter no reconocido 'i' en la línea 1, columna 9.
+Error léxico: carácter no reconocido 't' en la línea 1, columna 10.
+Error léxico: carácter no reconocido 'm' en la línea 1, columna 11.
+Error léxico: carácter no reconocido 'o' en la línea 1, columna 12.
+Error léxico: carácter no reconocido 'd' en la línea 1, columna 14.
+Error léxico: carácter no reconocido 'e' en la línea 1, columna 15.
+Error léxico: carácter no reconocido 'p' en la línea 1, columna 17.
+Error léxico: carácter no reconocido 'r' en la línea 1, columna 18.
+Error léxico: carácter no reconocido 'u' en la línea 1, columna 19.
+Error léxico: carácter no reconocido 'e' en la línea 1, columna 20.
+Error léxico: carácter no reconocido 'b' en la línea 1, columna 21.
+Error léxico: carácter no reconocido 'a' en la línea 1, columna 22.
+Error léxico: carácter no reconocido '-' en la línea 1, columna 24.
+Error léxico: carácter no reconocido 'K' en la línea 1, columna 26.
+Error léxico: carácter no reconocido 'e' en la línea 1, columna 27.
+Error léxico: carácter no reconocido 'n' en la línea 1, columna 28.
+Error léxico: carácter no reconocido 'n' en la línea 1, columna 29.
+Error léxico: carácter no reconocido 'y' en la línea 1, columna 30.
+Error léxico: carácter no reconocido 'C' en la línea 1, columna 32.
+Error léxico: carácter no reconocido 'h' en la línea 1, columna 33.
+Error léxico: carácter no reconocido 'u' en la línea 1, columna 34.
+Error léxico: carácter no reconocido 'n' en la línea 1, columna 35.
+Error léxico: carácter no reconocido 'g' en la línea 1, columna 36.
+Error léxico: carácter no reconocido '/' en la línea 2, columna 1.
+Error léxico: carácter no reconocido '/' en la línea 2, columna 2.
+Error léxico: carácter no reconocido 'R' en la línea 2, columna 4.
+Error léxico: carácter no reconocido 'e' en la línea 2, columna 5.
+Error léxico: carácter no reconocido 'g' en la línea 2, columna 6.
+Error léxico: carácter no reconocido 'i' en la línea 2, columna 7.
+Error léxico: carácter no reconocido 's' en la línea 2, columna 8.
+Error léxico: carácter no reconocido 't' en la línea 2, columna 9.
+Error léxico: carácter no reconocido 'r' en la línea 2, columna 10.
+Error léxico: carácter no reconocido 'o' en la línea 2, columna 11.
+Error léxico: carácter no reconocido 'd' en la línea 2, columna 13.
+Error léxico: carácter no reconocido 'e' en la línea 2, columna 14.
+Error léxico: carácter no reconocido 'n' en la línea 2, columna 16.
+Error léxico: carácter no reconocido 'o' en la línea 2, columna 17.
+Error léxico: carácter no reconocido 't' en la línea 2, columna 18.
+Error léxico: carácter no reconocido 'a' en la línea 2, columna 19.
+Error léxico: carácter no reconocido 's' en la línea 2, columna 20.
+Error léxico: carácter no reconocido 'd' en la línea 2, columna 22.
+Error léxico: carácter no reconocido 'e' en la línea 2, columna 23.
+Error léxico: carácter no reconocido 'u' en la línea 2, columna 25.
+Error léxico: carácter no reconocido 'n' en la línea 2, columna 26.
+Error léxico: carácter no reconocido 'e' en la línea 2, columna 28.
+Error léxico: carácter no reconocido 's' en la línea 2, columna 29.
+Error léxico: carácter no reconocido 't' en la línea 2, columna 30.
+Error léxico: carácter no reconocido 'u' en la línea 2, columna 31.
+Error léxico: carácter no reconocido 'd' en la línea 2, columna 32.
+Error léxico: carácter no reconocido 'i' en la línea 2, columna 33.
+Error léxico: carácter no reconocido 'a' en la línea 2, columna 34.
+Error léxico: carácter no reconocido 'n' en la línea 2, columna 35.
+Error léxico: carácter no reconocido 't' en la línea 2, columna 36.
+Error léxico: carácter no reconocido 'e' en la línea 2, columna 37.
+Error léxico: carácter no reconocido 'c' en la línea 2, columna 40.
+Error léxico: carácter no reconocido 'o' en la línea 2, columna 41.
+Error léxico: carácter no reconocido 'n' en la línea 2, columna 42.
+Error léxico: carácter no reconocido 's' en la línea 2, columna 43.
+Error léxico: carácter no reconocido 't' en la línea 2, columna 44.
+Error léxico: carácter no reconocido 'a' en la línea 2, columna 45.
+Error léxico: carácter no reconocido 'n' en la línea 2, columna 46.
+Error léxico: carácter no reconocido 't' en la línea 2, columna 47.
+Error léxico: carácter no reconocido 'e' en la línea 2, columna 48.
+Error léxico: carácter no reconocido 's' en la línea 2, columna 49.
+Error léxico: carácter no reconocido 'c' en la línea 2, columna 51.
+Error léxico: carácter no reconocido 'o' en la línea 2, columna 52.
+Error léxico: carácter no reconocido 'n' en la línea 2, columna 53.
+Error léxico: carácter no reconocido 't' en la línea 2, columna 55.
+Error léxico: carácter no reconocido 'i' en la línea 2, columna 56.
+Error léxico: carácter no reconocido 'p' en la línea 2, columna 57.
+Error léxico: carácter no reconocido 'o' en la línea 2, columna 58.
+Error léxico: carácter no reconocido 't' en la línea 2, columna 61.
+Error léxico: carácter no reconocido 'u' en la línea 2, columna 62.
+Error léxico: carácter no reconocido 'p' en la línea 2, columna 63.
+Error léxico: carácter no reconocido 'l' en la línea 2, columna 64.
+Error léxico: carácter no reconocido 'a' en la línea 2, columna 65.
+Error léxico: carácter no reconocido 's' en la línea 2, columna 66.
+Error léxico: carácter no reconocido '/' en la línea 3, columna 1.
+Error léxico: carácter no reconocido '/' en la línea 3, columna 2.
+Error léxico: carácter no reconocido 'r' en la línea 3, columna 4.
+Error léxico: carácter no reconocido 'e' en la línea 3, columna 5.
+Error léxico: carácter no reconocido 'p' en la línea 3, columna 6.
+Error léxico: carácter no reconocido 'e' en la línea 3, columna 7.
+Error léxico: carácter no reconocido 'a' en la línea 3, columna 8.
+Error léxico: carácter no reconocido 't' en la línea 3, columna 9.
+Error léxico: carácter no reconocido '-' en la línea 3, columna 10.
+Error léxico: carácter no reconocido 'w' en la línea 3, columna 11.
+Error léxico: carácter no reconocido 'h' en la línea 3, columna 12.
+Error léxico: carácter no reconocido 'i' en la línea 3, columna 13.
+Error léxico: carácter no reconocido 'l' en la línea 3, columna 14.
+Error léxico: carácter no reconocido 'e' en la línea 3, columna 15.
+Error léxico: carácter no reconocido 'y' en la línea 3, columna 17.
+Error léxico: carácter no reconocido 'f' en la línea 3, columna 19.
+Error léxico: carácter no reconocido 'u' en la línea 3, columna 20.
+Error léxico: carácter no reconocido 'n' en la línea 3, columna 21.
+Error léxico: carácter no reconocido 'c' en la línea 3, columna 22.
+Error léxico: carácter no reconocido 'i' en la línea 3, columna 23.
+Error léxico: carácter no reconocido 'o' en la línea 3, columna 24.
+Error léxico: carácter no reconocido 'n' en la línea 3, columna 25.
+Error léxico: carácter no reconocido 'e' en la línea 3, columna 26.
+Error léxico: carácter no reconocido 's' en la línea 3, columna 27.
+Error léxico: carácter no reconocido 'c' en la línea 3, columna 29.
+Error léxico: carácter no reconocido 'o' en la línea 3, columna 30.
+Error léxico: carácter no reconocido 'n' en la línea 3, columna 31.
+Error léxico: carácter no reconocido 'p' en la línea 3, columna 33.
+Error léxico: carácter no reconocido 'a' en la línea 3, columna 34.
+Error léxico: carácter no reconocido 'r' en la línea 3, columna 35.
+Error léxico: carácter no reconocido 'á' en la línea 3, columna 36.
+Error léxico: carácter no reconocido 'm' en la línea 3, columna 37.
+Error léxico: carácter no reconocido 'e' en la línea 3, columna 38.
+Error léxico: carácter no reconocido 't' en la línea 3, columna 39.
+Error léxico: carácter no reconocido 'r' en la línea 3, columna 40.
+Error léxico: carácter no reconocido 'o' en la línea 3, columna 41.
+Error léxico: carácter no reconocido 'p' en la línea 3, columna 43.
+Error léxico: carácter no reconocido 'o' en la línea 3, columna 44.
+Error léxico: carácter no reconocido 'r' en la línea 3, columna 45.
+Error léxico: carácter no reconocido 'd' en la línea 3, columna 47.
+Error léxico: carácter no reconocido 'e' en la línea 3, columna 48.
+Error léxico: carácter no reconocido 'f' en la línea 3, columna 49.
+Error léxico: carácter no reconocido 'e' en la línea 3, columna 50.
+Error léxico: carácter no reconocido 'c' en la línea 3, columna 51.
+Error léxico: carácter no reconocido 't' en la línea 3, columna 52.
+Error léxico: carácter no reconocido 'o' en la línea 3, columna 53.
+Error léxico: carácter no reconocido 'l' en la línea 5, columna 1.
+Error léxico: carácter no reconocido 'e' en la línea 5, columna 2.
+Error léxico: carácter no reconocido 't' en la línea 5, columna 3.
+Error léxico: carácter no reconocido 'c' en la línea 5, columna 5.
+Error léxico: carácter no reconocido 'u' en la línea 5, columna 6.
+Error léxico: carácter no reconocido 'r' en la línea 5, columna 7.
+Error léxico: carácter no reconocido 's' en la línea 5, columna 8.
+Error léxico: carácter no reconocido 'o' en la línea 5, columna 9.
+Error léxico: carácter no reconocido 'S' en la línea 5, columna 12.
+Error léxico: carácter no reconocido 't' en la línea 5, columna 13.
+Error léxico: carácter no reconocido 'r' en la línea 5, columna 14.
+Error léxico: carácter no reconocido 'i' en la línea 5, columna 15.
+Error léxico: carácter no reconocido 'n' en la línea 5, columna 16.
+Error léxico: carácter no reconocido 'g' en la línea 5, columna 17.
+Error léxico: carácter no reconocido '=' en la línea 5, columna 19.
+Error léxico: carácter no reconocido '"' en la línea 5, columna 21.
+Error léxico: carácter no reconocido 'L' en la línea 5, columna 22.
+Error léxico: carácter no reconocido 'e' en la línea 5, columna 23.
+Error léxico: carácter no reconocido 'n' en la línea 5, columna 24.
+Error léxico: carácter no reconocido 'g' en la línea 5, columna 25.
+Error léxico: carácter no reconocido 'u' en la línea 5, columna 26.
+Error léxico: carácter no reconocido 'a' en la línea 5, columna 27.
+Error léxico: carácter no reconocido 'j' en la línea 5, columna 28.
+Error léxico: carácter no reconocido 'e' en la línea 5, columna 29.
+Error léxico: carácter no reconocido 's' en la línea 5, columna 30.
+Error léxico: carácter no reconocido 'd' en la línea 5, columna 32.
+Error léxico: carácter no reconocido 'e' en la línea 5, columna 33.
+Error léxico: carácter no reconocido 'P' en la línea 5, columna 35.
+Error léxico: carácter no reconocido 'r' en la línea 5, columna 36.
+Error léxico: carácter no reconocido 'o' en la línea 5, columna 37.
+Error léxico: carácter no reconocido 'g' en la línea 5, columna 38.
+Error léxico: carácter no reconocido 'r' en la línea 5, columna 39.
+Error léxico: carácter no reconocido 'a' en la línea 5, columna 40.
+Error léxico: carácter no reconocido 'm' en la línea 5, columna 41.
+Error léxico: carácter no reconocido 'a' en la línea 5, columna 42.
+Error léxico: carácter no reconocido 'c' en la línea 5, columna 43.
+Error léxico: carácter no reconocido 'i' en la línea 5, columna 44.
+Error léxico: carácter no reconocido 'o' en la línea 5, columna 45.
+Error léxico: carácter no reconocido 'n' en la línea 5, columna 46.
+Error léxico: carácter no reconocido '"' en la línea 5, columna 47.
+Error léxico: carácter no reconocido 'l' en la línea 6, columna 1.
+Error léxico: carácter no reconocido 'e' en la línea 6, columna 2.
+Error léxico: carácter no reconocido 't' en la línea 6, columna 3.
+Error léxico: carácter no reconocido 'n' en la línea 6, columna 5.
+Error léxico: carácter no reconocido 'o' en la línea 6, columna 6.
+Error léxico: carácter no reconocido 't' en la línea 6, columna 7.
+Error léxico: carácter no reconocido 'a' en la línea 6, columna 8.
+Error léxico: carácter no reconocido 'M' en la línea 6, columna 9.
+Error léxico: carácter no reconocido 'i' en la línea 6, columna 10.
+Error léxico: carácter no reconocido 'n' en la línea 6, columna 11.
+Error léxico: carácter no reconocido 'i' en la línea 6, columna 12.
+Error léxico: carácter no reconocido 'm' en la línea 6, columna 13.
+Error léxico: carácter no reconocido 'a' en la línea 6, columna 14.
+Error léxico: carácter no reconocido 'D' en la línea 6, columna 17.
+Error léxico: carácter no reconocido 'o' en la línea 6, columna 18.
+Error léxico: carácter no reconocido 'u' en la línea 6, columna 19.
+Error léxico: carácter no reconocido 'b' en la línea 6, columna 20.
+Error léxico: carácter no reconocido 'l' en la línea 6, columna 21.
+Error léxico: carácter no reconocido 'e' en la línea 6, columna 22.
+Error léxico: carácter no reconocido '=' en la línea 6, columna 24.
+Error léxico: carácter no reconocido '7' en la línea 6, columna 26.
+Error léxico: carácter no reconocido '0' en la línea 6, columna 28.
+Error léxico: carácter no reconocido 'l' en la línea 7, columna 1.
+Error léxico: carácter no reconocido 'e' en la línea 7, columna 2.
+Error léxico: carácter no reconocido 't' en la línea 7, columna 3.
+Error léxico: carácter no reconocido 't' en la línea 7, columna 5.
+Error léxico: carácter no reconocido 'o' en la línea 7, columna 6.
+Error léxico: carácter no reconocido 't' en la línea 7, columna 7.
+Error léxico: carácter no reconocido 'a' en la línea 7, columna 8.
+Error léxico: carácter no reconocido 'l' en la línea 7, columna 9.
+Error léxico: carácter no reconocido 'P' en la línea 7, columna 10.
+Error léxico: carácter no reconocido 'a' en la línea 7, columna 11.
+Error léxico: carácter no reconocido 'r' en la línea 7, columna 12.
+Error léxico: carácter no reconocido 'c' en la línea 7, columna 13.
+Error léxico: carácter no reconocido 'i' en la línea 7, columna 14.
+Error léxico: carácter no reconocido 'a' en la línea 7, columna 15.
+Error léxico: carácter no reconocido 'l' en la línea 7, columna 16.
+Error léxico: carácter no reconocido 'e' en la línea 7, columna 17.
+Error léxico: carácter no reconocido 's' en la línea 7, columna 18.
+Error léxico: carácter no reconocido 'I' en la línea 7, columna 21.
+Error léxico: carácter no reconocido 'n' en la línea 7, columna 22.
+Error léxico: carácter no reconocido 't' en la línea 7, columna 23.
+Error léxico: carácter no reconocido '=' en la línea 7, columna 25.
+Error léxico: carácter no reconocido '3' en la línea 7, columna 27.
+Error léxico: carácter no reconocido '/' en la línea 9, columna 1.
+Error léxico: carácter no reconocido '/' en la línea 9, columna 2.
+Error léxico: carácter no reconocido 'T' en la línea 9, columna 4.
+Error léxico: carácter no reconocido 'u' en la línea 9, columna 5.
+Error léxico: carácter no reconocido 'p' en la línea 9, columna 6.
+Error léxico: carácter no reconocido 'l' en la línea 9, columna 7.
+Error léxico: carácter no reconocido 'a' en la línea 9, columna 8.
+Error léxico: carácter no reconocido 's' en la línea 9, columna 9.
+Error léxico: carácter no reconocido 'c' en la línea 9, columna 11.
+Error léxico: carácter no reconocido 'o' en la línea 9, columna 12.
+Error léxico: carácter no reconocido 'n' en la línea 9, columna 13.
+Error léxico: carácter no reconocido 'e' en la línea 9, columna 15.
+Error léxico: carácter no reconocido 'l' en la línea 9, columna 16.
+Error léxico: carácter no reconocido 'e' en la línea 9, columna 17.
+Error léxico: carácter no reconocido 'm' en la línea 9, columna 18.
+Error léxico: carácter no reconocido 'e' en la línea 9, columna 19.
+Error léxico: carácter no reconocido 'n' en la línea 9, columna 20.
+Error léxico: carácter no reconocido 't' en la línea 9, columna 21.
+Error léxico: carácter no reconocido 'o' en la línea 9, columna 22.
+Error léxico: carácter no reconocido 's' en la línea 9, columna 23.
+Error léxico: carácter no reconocido 'd' en la línea 9, columna 25.
+Error léxico: carácter no reconocido 'e' en la línea 9, columna 26.
+Error léxico: carácter no reconocido 'd' en la línea 9, columna 28.
+Error léxico: carácter no reconocido 'i' en la línea 9, columna 29.
+Error léxico: carácter no reconocido 's' en la línea 9, columna 30.
+Error léxico: carácter no reconocido 't' en la línea 9, columna 31.
+Error léxico: carácter no reconocido 'i' en la línea 9, columna 32.
+Error léxico: carácter no reconocido 'n' en la línea 9, columna 33.
+Error léxico: carácter no reconocido 't' en la línea 9, columna 34.
+Error léxico: carácter no reconocido 'o' en la línea 9, columna 35.
+Error léxico: carácter no reconocido 't' en la línea 9, columna 37.
+Error léxico: carácter no reconocido 'i' en la línea 9, columna 38.
+Error léxico: carácter no reconocido 'p' en la línea 9, columna 39.
+Error léxico: carácter no reconocido 'o' en la línea 9, columna 40.
+Error léxico: carácter no reconocido 'l' en la línea 10, columna 1.
+Error léxico: carácter no reconocido 'e' en la línea 10, columna 2.
+Error léxico: carácter no reconocido 't' en la línea 10, columna 3.
+Error léxico: carácter no reconocido 'a' en la línea 10, columna 5.
+Error léxico: carácter no reconocido 'l' en la línea 10, columna 6.
+Error léxico: carácter no reconocido 'u' en la línea 10, columna 7.
+Error léxico: carácter no reconocido 'm' en la línea 10, columna 8.
+Error léxico: carácter no reconocido 'n' en la línea 10, columna 9.
+Error léxico: carácter no reconocido 'o' en la línea 10, columna 10.
+Error léxico: carácter no reconocido 'S' en la línea 10, columna 14.
+Error léxico: carácter no reconocido 't' en la línea 10, columna 15.
+Error léxico: carácter no reconocido 'r' en la línea 10, columna 16.
+Error léxico: carácter no reconocido 'i' en la línea 10, columna 17.
+Error léxico: carácter no reconocido 'n' en la línea 10, columna 18.
+Error léxico: carácter no reconocido 'g' en la línea 10, columna 19.
+Error léxico: carácter no reconocido 'I' en la línea 10, columna 22.
+Error léxico: carácter no reconocido 'n' en la línea 10, columna 23.
+Error léxico: carácter no reconocido 't' en la línea 10, columna 24.
+Error léxico: carácter no reconocido 'B' en la línea 10, columna 27.
+Error léxico: carácter no reconocido 'o' en la línea 10, columna 28.
+Error léxico: carácter no reconocido 'o' en la línea 10, columna 29.
+Error léxico: carácter no reconocido 'l' en la línea 10, columna 30.
+Error léxico: carácter no reconocido '=' en la línea 10, columna 33.
+Error léxico: carácter no reconocido '"' en la línea 10, columna 36.
+Error léxico: carácter no reconocido 'A' en la línea 10, columna 37.
+Error léxico: carácter no reconocido 'n' en la línea 10, columna 38.
+Error léxico: carácter no reconocido 'a' en la línea 10, columna 39.
+Error léxico: carácter no reconocido '"' en la línea 10, columna 40.
+Error léxico: carácter no reconocido '2' en la línea 10, columna 43.
+Error léxico: carácter no reconocido '0' en la línea 10, columna 44.
+Error léxico: carácter no reconocido 't' en la línea 10, columna 47.
+Error léxico: carácter no reconocido 'r' en la línea 10, columna 48.
+Error léxico: carácter no reconocido 'u' en la línea 10, columna 49.
+Error léxico: carácter no reconocido 'e' en la línea 10, columna 50.
+Error léxico: carácter no reconocido 'l' en la línea 11, columna 1.
+Error léxico: carácter no reconocido 'e' en la línea 11, columna 2.
+Error léxico: carácter no reconocido 't' en la línea 11, columna 3.
+Error léxico: carácter no reconocido 'm' en la línea 11, columna 5.
+Error léxico: carácter no reconocido 'e' en la línea 11, columna 6.
+Error léxico: carácter no reconocido 'j' en la línea 11, columna 7.
+Error léxico: carácter no reconocido 'o' en la línea 11, columna 8.
+Error léxico: carácter no reconocido 'r' en la línea 11, columna 9.
+Error léxico: carácter no reconocido 'P' en la línea 11, columna 10.
+Error léxico: carácter no reconocido 'a' en la línea 11, columna 11.
+Error léxico: carácter no reconocido 'r' en la línea 11, columna 12.
+Error léxico: carácter no reconocido 'c' en la línea 11, columna 13.
+Error léxico: carácter no reconocido 'i' en la línea 11, columna 14.
+Error léxico: carácter no reconocido 'a' en la línea 11, columna 15.
+Error léxico: carácter no reconocido 'l' en la línea 11, columna 16.
+Error léxico: carácter no reconocido 'I' en la línea 11, columna 20.
+Error léxico: carácter no reconocido 'n' en la línea 11, columna 21.
+Error léxico: carácter no reconocido 't' en la línea 11, columna 22.
+Error léxico: carácter no reconocido 'D' en la línea 11, columna 25.
+Error léxico: carácter no reconocido 'o' en la línea 11, columna 26.
+Error léxico: carácter no reconocido 'u' en la línea 11, columna 27.
+Error léxico: carácter no reconocido 'b' en la línea 11, columna 28.
+Error léxico: carácter no reconocido 'l' en la línea 11, columna 29.
+Error léxico: carácter no reconocido 'e' en la línea 11, columna 30.
+Error léxico: carácter no reconocido '=' en la línea 11, columna 33.
+Error léxico: carácter no reconocido '2' en la línea 11, columna 36.
+Error léxico: carácter no reconocido '9' en la línea 11, columna 39.
+Error léxico: carácter no reconocido '5' en la línea 11, columna 41.
+Error léxico: carácter no reconocido '/' en la línea 13, columna 1.
+Error léxico: carácter no reconocido '/' en la línea 13, columna 2.
+Error léxico: carácter no reconocido 'F' en la línea 13, columna 4.
+Error léxico: carácter no reconocido 'u' en la línea 13, columna 5.
+Error léxico: carácter no reconocido 'n' en la línea 13, columna 6.
+Error léxico: carácter no reconocido 'c' en la línea 13, columna 7.
+Error léxico: carácter no reconocido 'i' en la línea 13, columna 8.
+Error léxico: carácter no reconocido 'ó' en la línea 13, columna 9.
+Error léxico: carácter no reconocido 'n' en la línea 13, columna 10.
+Error léxico: carácter no reconocido 'c' en la línea 13, columna 12.
+Error léxico: carácter no reconocido 'o' en la línea 13, columna 13.
+Error léxico: carácter no reconocido 'n' en la línea 13, columna 14.
+Error léxico: carácter no reconocido 'p' en la línea 13, columna 16.
+Error léxico: carácter no reconocido 'a' en la línea 13, columna 17.
+Error léxico: carácter no reconocido 'r' en la línea 13, columna 18.
+Error léxico: carácter no reconocido 'á' en la línea 13, columna 19.
+Error léxico: carácter no reconocido 'm' en la línea 13, columna 20.
+Error léxico: carácter no reconocido 'e' en la línea 13, columna 21.
+Error léxico: carácter no reconocido 't' en la línea 13, columna 22.
+Error léxico: carácter no reconocido 'r' en la línea 13, columna 23.
+Error léxico: carácter no reconocido 'o' en la línea 13, columna 24.
+Error léxico: carácter no reconocido 'p' en la línea 13, columna 26.
+Error léxico: carácter no reconocido 'o' en la línea 13, columna 27.
+Error léxico: carácter no reconocido 'r' en la línea 13, columna 28.
+Error léxico: carácter no reconocido 'd' en la línea 13, columna 30.
+Error léxico: carácter no reconocido 'e' en la línea 13, columna 31.
+Error léxico: carácter no reconocido 'f' en la línea 13, columna 32.
+Error léxico: carácter no reconocido 'e' en la línea 13, columna 33.
+Error léxico: carácter no reconocido 'c' en la línea 13, columna 34.
+Error léxico: carácter no reconocido 't' en la línea 13, columna 35.
+Error léxico: carácter no reconocido 'o' en la línea 13, columna 36.
+Error léxico: carácter no reconocido 'f' en la línea 14, columna 1.
+Error léxico: carácter no reconocido 'u' en la línea 14, columna 2.
+Error léxico: carácter no reconocido 'n' en la línea 14, columna 3.
+Error léxico: carácter no reconocido 'c' en la línea 14, columna 4.
+Error léxico: carácter no reconocido 's' en la línea 14, columna 6.
+Error léxico: carácter no reconocido 'a' en la línea 14, columna 7.
+Error léxico: carácter no reconocido 'l' en la línea 14, columna 8.
+Error léxico: carácter no reconocido 'u' en la línea 14, columna 9.
+Error léxico: carácter no reconocido 'd' en la línea 14, columna 10.
+Error léxico: carácter no reconocido 'a' en la línea 14, columna 11.
+Error léxico: carácter no reconocido 'r' en la línea 14, columna 12.
+Error léxico: carácter no reconocido 'n' en la línea 14, columna 14.
+Error léxico: carácter no reconocido 'o' en la línea 14, columna 15.
+Error léxico: carácter no reconocido 'm' en la línea 14, columna 16.
+Error léxico: carácter no reconocido 'b' en la línea 14, columna 17.
+Error léxico: carácter no reconocido 'r' en la línea 14, columna 18.
+Error léxico: carácter no reconocido 'e' en la línea 14, columna 19.
+Error léxico: carácter no reconocido 'S' en la línea 14, columna 22.
+Error léxico: carácter no reconocido 't' en la línea 14, columna 23.
+Error léxico: carácter no reconocido 'r' en la línea 14, columna 24.
+Error léxico: carácter no reconocido 'i' en la línea 14, columna 25.
+Error léxico: carácter no reconocido 'n' en la línea 14, columna 26.
+Error léxico: carácter no reconocido 'g' en la línea 14, columna 27.
+Error léxico: carácter no reconocido '=' en la línea 14, columna 29.
+Error léxico: carácter no reconocido '"' en la línea 14, columna 31.
+Error léxico: carácter no reconocido 'e' en la línea 14, columna 32.
+Error léxico: carácter no reconocido 's' en la línea 14, columna 33.
+Error léxico: carácter no reconocido 't' en la línea 14, columna 34.
+Error léxico: carácter no reconocido 'u' en la línea 14, columna 35.
+Error léxico: carácter no reconocido 'd' en la línea 14, columna 36.
+Error léxico: carácter no reconocido 'i' en la línea 14, columna 37.
+Error léxico: carácter no reconocido 'a' en la línea 14, columna 38.
+Error léxico: carácter no reconocido 'n' en la línea 14, columna 39.
+Error léxico: carácter no reconocido 't' en la línea 14, columna 40.
+Error léxico: carácter no reconocido 'e' en la línea 14, columna 41.
+Error léxico: carácter no reconocido '"' en la línea 14, columna 42.
+Error léxico: carácter no reconocido 'S' en la línea 14, columna 48.
+Error léxico: carácter no reconocido 't' en la línea 14, columna 49.
+Error léxico: carácter no reconocido 'r' en la línea 14, columna 50.
+Error léxico: carácter no reconocido 'i' en la línea 14, columna 51.
+Error léxico: carácter no reconocido 'n' en la línea 14, columna 52.
+Error léxico: carácter no reconocido 'g' en la línea 14, columna 53.
+Error léxico: carácter no reconocido '{' en la línea 14, columna 55.
+Error léxico: carácter no reconocido 'r' en la línea 15, columna 5.
+Error léxico: carácter no reconocido 'e' en la línea 15, columna 6.
+Error léxico: carácter no reconocido 't' en la línea 15, columna 7.
+Error léxico: carácter no reconocido 'u' en la línea 15, columna 8.
+Error léxico: carácter no reconocido 'r' en la línea 15, columna 9.
+Error léxico: carácter no reconocido 'n' en la línea 15, columna 10.
+Error léxico: carácter no reconocido '"' en la línea 15, columna 12.
+Error léxico: carácter no reconocido 'H' en la línea 15, columna 13.
+Error léxico: carácter no reconocido 'o' en la línea 15, columna 14.
+Error léxico: carácter no reconocido 'l' en la línea 15, columna 15.
+Error léxico: carácter no reconocido 'a' en la línea 15, columna 16.
+Error léxico: carácter no reconocido '"' en la línea 15, columna 19.
+Error léxico: carácter no reconocido '+' en la línea 15, columna 21.
+Error léxico: carácter no reconocido 'n' en la línea 15, columna 23.
+Error léxico: carácter no reconocido 'o' en la línea 15, columna 24.
+Error léxico: carácter no reconocido 'm' en la línea 15, columna 25.
+Error léxico: carácter no reconocido 'b' en la línea 15, columna 26.
+Error léxico: carácter no reconocido 'r' en la línea 15, columna 27.
+Error léxico: carácter no reconocido 'e' en la línea 15, columna 28.
+Error léxico: carácter no reconocido '}' en la línea 16, columna 1.
+Error léxico: carácter no reconocido '/' en la línea 18, columna 1.
+Error léxico: carácter no reconocido '/' en la línea 18, columna 2.
+Error léxico: carácter no reconocido 'F' en la línea 18, columna 4.
+Error léxico: carácter no reconocido 'u' en la línea 18, columna 5.
+Error léxico: carácter no reconocido 'n' en la línea 18, columna 6.
+Error léxico: carácter no reconocido 'c' en la línea 18, columna 7.
+Error léxico: carácter no reconocido 'i' en la línea 18, columna 8.
+Error léxico: carácter no reconocido 'ó' en la línea 18, columna 9.
+Error léxico: carácter no reconocido 'n' en la línea 18, columna 10.
+Error léxico: carácter no reconocido 'c' en la línea 18, columna 12.
+Error léxico: carácter no reconocido 'o' en la línea 18, columna 13.
+Error léxico: carácter no reconocido 'n' en la línea 18, columna 14.
+Error léxico: carácter no reconocido 'p' en la línea 18, columna 16.
+Error léxico: carácter no reconocido 'a' en la línea 18, columna 17.
+Error léxico: carácter no reconocido 'r' en la línea 18, columna 18.
+Error léxico: carácter no reconocido 'á' en la línea 18, columna 19.
+Error léxico: carácter no reconocido 'm' en la línea 18, columna 20.
+Error léxico: carácter no reconocido 'e' en la línea 18, columna 21.
+Error léxico: carácter no reconocido 't' en la línea 18, columna 22.
+Error léxico: carácter no reconocido 'r' en la línea 18, columna 23.
+Error léxico: carácter no reconocido 'o' en la línea 18, columna 24.
+Error léxico: carácter no reconocido 'p' en la línea 18, columna 26.
+Error léxico: carácter no reconocido 'o' en la línea 18, columna 27.
+Error léxico: carácter no reconocido 'r' en la línea 18, columna 28.
+Error léxico: carácter no reconocido 'd' en la línea 18, columna 30.
+Error léxico: carácter no reconocido 'e' en la línea 18, columna 31.
+Error léxico: carácter no reconocido 'f' en la línea 18, columna 32.
+Error léxico: carácter no reconocido 'e' en la línea 18, columna 33.
+Error léxico: carácter no reconocido 'c' en la línea 18, columna 34.
+Error léxico: carácter no reconocido 't' en la línea 18, columna 35.
+Error léxico: carácter no reconocido 'o' en la línea 18, columna 36.
+Error léxico: carácter no reconocido 'q' en la línea 18, columna 38.
+Error léxico: carácter no reconocido 'u' en la línea 18, columna 39.
+Error léxico: carácter no reconocido 'e' en la línea 18, columna 40.
+Error léxico: carácter no reconocido 'r' en la línea 18, columna 42.
+Error léxico: carácter no reconocido 'e' en la línea 18, columna 43.
+Error léxico: carácter no reconocido 't' en la línea 18, columna 44.
+Error léxico: carácter no reconocido 'o' en la línea 18, columna 45.
+Error léxico: carácter no reconocido 'r' en la línea 18, columna 46.
+Error léxico: carácter no reconocido 'n' en la línea 18, columna 47.
+Error léxico: carácter no reconocido 'a' en la línea 18, columna 48.
+Error léxico: carácter no reconocido 'u' en la línea 18, columna 50.
+Error léxico: carácter no reconocido 'n' en la línea 18, columna 51.
+Error léxico: carácter no reconocido 'a' en la línea 18, columna 52.
+Error léxico: carácter no reconocido 't' en la línea 18, columna 54.
+Error léxico: carácter no reconocido 'u' en la línea 18, columna 55.
+Error léxico: carácter no reconocido 'p' en la línea 18, columna 56.
+Error léxico: carácter no reconocido 'l' en la línea 18, columna 57.
+Error léxico: carácter no reconocido 'a' en la línea 18, columna 58.
+Error léxico: carácter no reconocido 'f' en la línea 19, columna 1.
+Error léxico: carácter no reconocido 'u' en la línea 19, columna 2.
+Error léxico: carácter no reconocido 'n' en la línea 19, columna 3.
+Error léxico: carácter no reconocido 'c' en la línea 19, columna 4.
+Error léxico: carácter no reconocido 'e' en la línea 19, columna 6.
+Error léxico: carácter no reconocido 'v' en la línea 19, columna 7.
+Error léxico: carácter no reconocido 'a' en la línea 19, columna 8.
+Error léxico: carácter no reconocido 'l' en la línea 19, columna 9.
+Error léxico: carácter no reconocido 'u' en la línea 19, columna 10.
+Error léxico: carácter no reconocido 'a' en la línea 19, columna 11.
+Error léxico: carácter no reconocido 'r' en la línea 19, columna 12.
+Error léxico: carácter no reconocido 'n' en la línea 19, columna 14.
+Error léxico: carácter no reconocido 'o' en la línea 19, columna 15.
+Error léxico: carácter no reconocido 't' en la línea 19, columna 16.
+Error léxico: carácter no reconocido 'a' en la línea 19, columna 17.
+Error léxico: carácter no reconocido 'D' en la línea 19, columna 20.
+Error léxico: carácter no reconocido 'o' en la línea 19, columna 21.
+Error léxico: carácter no reconocido 'u' en la línea 19, columna 22.
+Error léxico: carácter no reconocido 'b' en la línea 19, columna 23.
+Error léxico: carácter no reconocido 'l' en la línea 19, columna 24.
+Error léxico: carácter no reconocido 'e' en la línea 19, columna 25.
+Error léxico: carácter no reconocido 'm' en la línea 19, columna 28.
+Error léxico: carácter no reconocido 'i' en la línea 19, columna 29.
+Error léxico: carácter no reconocido 'n' en la línea 19, columna 30.
+Error léxico: carácter no reconocido 'i' en la línea 19, columna 31.
+Error léxico: carácter no reconocido 'm' en la línea 19, columna 32.
+Error léxico: carácter no reconocido 'o' en la línea 19, columna 33.
+Error léxico: carácter no reconocido 'D' en la línea 19, columna 36.
+Error léxico: carácter no reconocido 'o' en la línea 19, columna 37.
+Error léxico: carácter no reconocido 'u' en la línea 19, columna 38.
+Error léxico: carácter no reconocido 'b' en la línea 19, columna 39.
+Error léxico: carácter no reconocido 'l' en la línea 19, columna 40.
+Error léxico: carácter no reconocido 'e' en la línea 19, columna 41.
+Error léxico: carácter no reconocido '=' en la línea 19, columna 43.
+Error léxico: carácter no reconocido '7' en la línea 19, columna 45.
+Error léxico: carácter no reconocido '0' en la línea 19, columna 47.
+Error léxico: carácter no reconocido 'D' en la línea 19, columna 54.
+Error léxico: carácter no reconocido 'o' en la línea 19, columna 55.
+Error léxico: carácter no reconocido 'u' en la línea 19, columna 56.
+Error léxico: carácter no reconocido 'b' en la línea 19, columna 57.
+Error léxico: carácter no reconocido 'l' en la línea 19, columna 58.
+Error léxico: carácter no reconocido 'e' en la línea 19, columna 59.
+Error léxico: carácter no reconocido 'B' en la línea 19, columna 62.
+Error léxico: carácter no reconocido 'o' en la línea 19, columna 63.
+Error léxico: carácter no reconocido 'o' en la línea 19, columna 64.
+Error léxico: carácter no reconocido 'l' en la línea 19, columna 65.
+Error léxico: carácter no reconocido '{' en la línea 19, columna 68.
+Error léxico: carácter no reconocido 'r' en la línea 20, columna 5.
+Error léxico: carácter no reconocido 'e' en la línea 20, columna 6.
+Error léxico: carácter no reconocido 't' en la línea 20, columna 7.
+Error léxico: carácter no reconocido 'u' en la línea 20, columna 8.
+Error léxico: carácter no reconocido 'r' en la línea 20, columna 9.
+Error léxico: carácter no reconocido 'n' en la línea 20, columna 10.
+Error léxico: carácter no reconocido 'n' en la línea 20, columna 13.
+Error léxico: carácter no reconocido 'o' en la línea 20, columna 14.
+Error léxico: carácter no reconocido 't' en la línea 20, columna 15.
+Error léxico: carácter no reconocido 'a' en la línea 20, columna 16.
+Error léxico: carácter no reconocido 'n' en la línea 20, columna 19.
+Error léxico: carácter no reconocido 'o' en la línea 20, columna 20.
+Error léxico: carácter no reconocido 't' en la línea 20, columna 21.
+Error léxico: carácter no reconocido 'a' en la línea 20, columna 22.
+Error léxico: carácter no reconocido '>' en la línea 20, columna 24.
+Error léxico: carácter no reconocido '=' en la línea 20, columna 25.
+Error léxico: carácter no reconocido 'm' en la línea 20, columna 27.
+Error léxico: carácter no reconocido 'i' en la línea 20, columna 28.
+Error léxico: carácter no reconocido 'n' en la línea 20, columna 29.
+Error léxico: carácter no reconocido 'i' en la línea 20, columna 30.
+Error léxico: carácter no reconocido 'm' en la línea 20, columna 31.
+Error léxico: carácter no reconocido 'o' en la línea 20, columna 32.
+Error léxico: carácter no reconocido '}' en la línea 21, columna 1.
+Error léxico: carácter no reconocido '/' en la línea 23, columna 1.
+Error léxico: carácter no reconocido '/' en la línea 23, columna 2.
+Error léxico: carácter no reconocido 'F' en la línea 23, columna 4.
+Error léxico: carácter no reconocido 'u' en la línea 23, columna 5.
+Error léxico: carácter no reconocido 'n' en la línea 23, columna 6.
+Error léxico: carácter no reconocido 'c' en la línea 23, columna 7.
+Error léxico: carácter no reconocido 'i' en la línea 23, columna 8.
+Error léxico: carácter no reconocido 'ó' en la línea 23, columna 9.
+Error léxico: carácter no reconocido 'n' en la línea 23, columna 10.
+Error léxico: carácter no reconocido 'c' en la línea 23, columna 12.
+Error léxico: carácter no reconocido 'o' en la línea 23, columna 13.
+Error léxico: carácter no reconocido 'n' en la línea 23, columna 14.
+Error léxico: carácter no reconocido 'r' en la línea 23, columna 16.
+Error léxico: carácter no reconocido 'e' en la línea 23, columna 17.
+Error léxico: carácter no reconocido 'p' en la línea 23, columna 18.
+Error léxico: carácter no reconocido 'e' en la línea 23, columna 19.
+Error léxico: carácter no reconocido 'a' en la línea 23, columna 20.
+Error léxico: carácter no reconocido 't' en la línea 23, columna 21.
+Error léxico: carácter no reconocido '-' en la línea 23, columna 22.
+Error léxico: carácter no reconocido 'w' en la línea 23, columna 23.
+Error léxico: carácter no reconocido 'h' en la línea 23, columna 24.
+Error léxico: carácter no reconocido 'i' en la línea 23, columna 25.
+Error léxico: carácter no reconocido 'l' en la línea 23, columna 26.
+Error léxico: carácter no reconocido 'e' en la línea 23, columna 27.
+Error léxico: carácter no reconocido 'i' en la línea 23, columna 29.
+Error léxico: carácter no reconocido 'n' en la línea 23, columna 30.
+Error léxico: carácter no reconocido 't' en la línea 23, columna 31.
+Error léxico: carácter no reconocido 'e' en la línea 23, columna 32.
+Error léxico: carácter no reconocido 'r' en la línea 23, columna 33.
+Error léxico: carácter no reconocido 'n' en la línea 23, columna 34.
+Error léxico: carácter no reconocido 'o' en la línea 23, columna 35.
+Error léxico: carácter no reconocido 'f' en la línea 24, columna 1.
+Error léxico: carácter no reconocido 'u' en la línea 24, columna 2.
+Error léxico: carácter no reconocido 'n' en la línea 24, columna 3.
+Error léxico: carácter no reconocido 'c' en la línea 24, columna 4.
+Error léxico: carácter no reconocido 'c' en la línea 24, columna 6.
+Error léxico: carácter no reconocido 'u' en la línea 24, columna 7.
+Error léxico: carácter no reconocido 'e' en la línea 24, columna 8.
+Error léxico: carácter no reconocido 'n' en la línea 24, columna 9.
+Error léxico: carácter no reconocido 't' en la línea 24, columna 10.
+Error léxico: carácter no reconocido 'a' en la línea 24, columna 11.
+Error léxico: carácter no reconocido 'R' en la línea 24, columna 12.
+Error léxico: carácter no reconocido 'e' en la línea 24, columna 13.
+Error léxico: carácter no reconocido 'g' en la línea 24, columna 14.
+Error léxico: carácter no reconocido 'r' en la línea 24, columna 15.
+Error léxico: carácter no reconocido 'e' en la línea 24, columna 16.
+Error léxico: carácter no reconocido 's' en la línea 24, columna 17.
+Error léxico: carácter no reconocido 'i' en la línea 24, columna 18.
+Error léxico: carácter no reconocido 'v' en la línea 24, columna 19.
+Error léxico: carácter no reconocido 'a' en la línea 24, columna 20.
+Error léxico: carácter no reconocido 'd' en la línea 24, columna 22.
+Error léxico: carácter no reconocido 'e' en la línea 24, columna 23.
+Error léxico: carácter no reconocido 's' en la línea 24, columna 24.
+Error léxico: carácter no reconocido 'd' en la línea 24, columna 25.
+Error léxico: carácter no reconocido 'e' en la línea 24, columna 26.
+Error léxico: carácter no reconocido 'I' en la línea 24, columna 29.
+Error léxico: carácter no reconocido 'n' en la línea 24, columna 30.
+Error léxico: carácter no reconocido 't' en la línea 24, columna 31.
+Error léxico: carácter no reconocido '=' en la línea 24, columna 33.
+Error léxico: carácter no reconocido '3' en la línea 24, columna 35.
+Error léxico: carácter no reconocido 'I' en la línea 24, columna 41.
+Error léxico: carácter no reconocido 'n' en la línea 24, columna 42.
+Error léxico: carácter no reconocido 't' en la línea 24, columna 43.
+Error léxico: carácter no reconocido '{' en la línea 24, columna 45.
+Error léxico: carácter no reconocido 'v' en la línea 25, columna 5.
+Error léxico: carácter no reconocido 'a' en la línea 25, columna 6.
+Error léxico: carácter no reconocido 'r' en la línea 25, columna 7.
+Error léxico: carácter no reconocido 'n' en la línea 25, columna 9.
+Error léxico: carácter no reconocido 'I' en la línea 25, columna 12.
+Error léxico: carácter no reconocido 'n' en la línea 25, columna 13.
+Error léxico: carácter no reconocido 't' en la línea 25, columna 14.
+Error léxico: carácter no reconocido '=' en la línea 25, columna 16.
+Error léxico: carácter no reconocido 'd' en la línea 25, columna 18.
+Error léxico: carácter no reconocido 'e' en la línea 25, columna 19.
+Error léxico: carácter no reconocido 's' en la línea 25, columna 20.
+Error léxico: carácter no reconocido 'd' en la línea 25, columna 21.
+Error léxico: carácter no reconocido 'e' en la línea 25, columna 22.
+Error léxico: carácter no reconocido 'r' en la línea 26, columna 5.
+Error léxico: carácter no reconocido 'e' en la línea 26, columna 6.
+Error léxico: carácter no reconocido 'p' en la línea 26, columna 7.
+Error léxico: carácter no reconocido 'e' en la línea 26, columna 8.
+Error léxico: carácter no reconocido 'a' en la línea 26, columna 9.
+Error léxico: carácter no reconocido 't' en la línea 26, columna 10.
+Error léxico: carácter no reconocido '{' en la línea 26, columna 12.
+Error léxico: carácter no reconocido 'p' en la línea 27, columna 9.
+Error léxico: carácter no reconocido 'r' en la línea 27, columna 10.
+Error léxico: carácter no reconocido 'i' en la línea 27, columna 11.
+Error léxico: carácter no reconocido 'n' en la línea 27, columna 12.
+Error léxico: carácter no reconocido 't' en la línea 27, columna 13.
+Error léxico: carácter no reconocido '"' en la línea 27, columna 15.
+Error léxico: carácter no reconocido 'F' en la línea 27, columna 16.
+Error léxico: carácter no reconocido 'a' en la línea 27, columna 17.
+Error léxico: carácter no reconocido 'l' en la línea 27, columna 18.
+Error léxico: carácter no reconocido 't' en la línea 27, columna 19.
+Error léxico: carácter no reconocido 'a' en la línea 27, columna 20.
+Error léxico: carácter no reconocido 'n' en la línea 27, columna 21.
+Error léxico: carácter no reconocido '"' en la línea 27, columna 22.
+Error léxico: carácter no reconocido 'n' en la línea 27, columna 25.
+Error léxico: carácter no reconocido 'n' en la línea 28, columna 9.
+Error léxico: carácter no reconocido '-' en la línea 28, columna 11.
+Error léxico: carácter no reconocido '=' en la línea 28, columna 12.
+Error léxico: carácter no reconocido '1' en la línea 28, columna 14.
+Error léxico: carácter no reconocido '}' en la línea 29, columna 5.
+Error léxico: carácter no reconocido 'w' en la línea 29, columna 7.
+Error léxico: carácter no reconocido 'h' en la línea 29, columna 8.
+Error léxico: carácter no reconocido 'i' en la línea 29, columna 9.
+Error léxico: carácter no reconocido 'l' en la línea 29, columna 10.
+Error léxico: carácter no reconocido 'e' en la línea 29, columna 11.
+Error léxico: carácter no reconocido 'n' en la línea 29, columna 13.
+Error léxico: carácter no reconocido '>' en la línea 29, columna 15.
+Error léxico: carácter no reconocido '0' en la línea 29, columna 17.
+Error léxico: carácter no reconocido 'r' en la línea 30, columna 5.
+Error léxico: carácter no reconocido 'e' en la línea 30, columna 6.
+Error léxico: carácter no reconocido 't' en la línea 30, columna 7.
+Error léxico: carácter no reconocido 'u' en la línea 30, columna 8.
+Error léxico: carácter no reconocido 'r' en la línea 30, columna 9.
+Error léxico: carácter no reconocido 'n' en la línea 30, columna 10.
+Error léxico: carácter no reconocido 'n' en la línea 30, columna 12.
+Error léxico: carácter no reconocido '}' en la línea 31, columna 1.
+Error léxico: carácter no reconocido 'p' en la línea 33, columna 1.
+Error léxico: carácter no reconocido 'r' en la línea 33, columna 2.
+Error léxico: carácter no reconocido 'i' en la línea 33, columna 3.
+Error léxico: carácter no reconocido 'n' en la línea 33, columna 4.
+Error léxico: carácter no reconocido 't' en la línea 33, columna 5.
+Error léxico: carácter no reconocido 's' en la línea 33, columna 7.
+Error léxico: carácter no reconocido 'a' en la línea 33, columna 8.
+Error léxico: carácter no reconocido 'l' en la línea 33, columna 9.
+Error léxico: carácter no reconocido 'u' en la línea 33, columna 10.
+Error léxico: carácter no reconocido 'd' en la línea 33, columna 11.
+Error léxico: carácter no reconocido 'a' en la línea 33, columna 12.
+Error léxico: carácter no reconocido 'r' en la línea 33, columna 13.
+Error léxico: carácter no reconocido 'p' en la línea 34, columna 1.
+Error léxico: carácter no reconocido 'r' en la línea 34, columna 2.
+Error léxico: carácter no reconocido 'i' en la línea 34, columna 3.
+Error léxico: carácter no reconocido 'n' en la línea 34, columna 4.
+Error léxico: carácter no reconocido 't' en la línea 34, columna 5.
+Error léxico: carácter no reconocido 's' en la línea 34, columna 7.
+Error léxico: carácter no reconocido 'a' en la línea 34, columna 8.
+Error léxico: carácter no reconocido 'l' en la línea 34, columna 9.
+Error léxico: carácter no reconocido 'u' en la línea 34, columna 10.
+Error léxico: carácter no reconocido 'd' en la línea 34, columna 11.
+Error léxico: carácter no reconocido 'a' en la línea 34, columna 12.
+Error léxico: carácter no reconocido 'r' en la línea 34, columna 13.
+Error léxico: carácter no reconocido 'n' en la línea 34, columna 15.
+Error léxico: carácter no reconocido 'o' en la línea 34, columna 16.
+Error léxico: carácter no reconocido 'm' en la línea 34, columna 17.
+Error léxico: carácter no reconocido 'b' en la línea 34, columna 18.
+Error léxico: carácter no reconocido 'r' en la línea 34, columna 19.
+Error léxico: carácter no reconocido 'e' en la línea 34, columna 20.
+Error léxico: carácter no reconocido 'a' en la línea 34, columna 23.
+Error léxico: carácter no reconocido 'l' en la línea 34, columna 24.
+Error léxico: carácter no reconocido 'u' en la línea 34, columna 25.
+Error léxico: carácter no reconocido 'm' en la línea 34, columna 26.
+Error léxico: carácter no reconocido 'n' en la línea 34, columna 27.
+Error léxico: carácter no reconocido 'o' en la línea 34, columna 28.
+Error léxico: carácter no reconocido '0' en la línea 34, columna 30.
+Error léxico: carácter no reconocido 'p' en la línea 35, columna 1.
+Error léxico: carácter no reconocido 'r' en la línea 35, columna 2.
+Error léxico: carácter no reconocido 'i' en la línea 35, columna 3.
+Error léxico: carácter no reconocido 'n' en la línea 35, columna 4.
+Error léxico: carácter no reconocido 't' en la línea 35, columna 5.
+Error léxico: carácter no reconocido '"' en la línea 35, columna 7.
+Error léxico: carácter no reconocido 'C' en la línea 35, columna 8.
+Error léxico: carácter no reconocido 'u' en la línea 35, columna 9.
+Error léxico: carácter no reconocido 'r' en la línea 35, columna 10.
+Error léxico: carácter no reconocido 's' en la línea 35, columna 11.
+Error léxico: carácter no reconocido 'o' en la línea 35, columna 12.
+Error léxico: carácter no reconocido '"' en la línea 35, columna 14.
+Error léxico: carácter no reconocido 'c' en la línea 35, columna 17.
+Error léxico: carácter no reconocido 'u' en la línea 35, columna 18.
+Error léxico: carácter no reconocido 'r' en la línea 35, columna 19.
+Error léxico: carácter no reconocido 's' en la línea 35, columna 20.
+Error léxico: carácter no reconocido 'o' en la línea 35, columna 21.
+Error léxico: carácter no reconocido '"' en la línea 35, columna 24.
+Error léxico: carácter no reconocido '-' en la línea 35, columna 25.
+Error léxico: carácter no reconocido 'E' en la línea 35, columna 27.
+Error léxico: carácter no reconocido 'd' en la línea 35, columna 28.
+Error léxico: carácter no reconocido 'a' en la línea 35, columna 29.
+Error léxico: carácter no reconocido 'd' en la línea 35, columna 30.
+Error léxico: carácter no reconocido '"' en la línea 35, columna 32.
+Error léxico: carácter no reconocido 'a' en la línea 35, columna 35.
+Error léxico: carácter no reconocido 'l' en la línea 35, columna 36.
+Error léxico: carácter no reconocido 'u' en la línea 35, columna 37.
+Error léxico: carácter no reconocido 'm' en la línea 35, columna 38.
+Error léxico: carácter no reconocido 'n' en la línea 35, columna 39.
+Error léxico: carácter no reconocido 'o' en la línea 35, columna 40.
+Error léxico: carácter no reconocido '1' en la línea 35, columna 42.
+Error léxico: carácter no reconocido '"' en la línea 35, columna 45.
+Error léxico: carácter no reconocido '-' en la línea 35, columna 46.
+Error léxico: carácter no reconocido 'M' en la línea 35, columna 48.
+Error léxico: carácter no reconocido 'a' en la línea 35, columna 49.
+Error léxico: carácter no reconocido 't' en la línea 35, columna 50.
+Error léxico: carácter no reconocido 'r' en la línea 35, columna 51.
+Error léxico: carácter no reconocido 'i' en la línea 35, columna 52.
+Error léxico: carácter no reconocido 'c' en la línea 35, columna 53.
+Error léxico: carácter no reconocido 'u' en la línea 35, columna 54.
+Error léxico: carácter no reconocido 'l' en la línea 35, columna 55.
+Error léxico: carácter no reconocido 'a' en la línea 35, columna 56.
+Error léxico: carácter no reconocido 'd' en la línea 35, columna 57.
+Error léxico: carácter no reconocido 'o' en la línea 35, columna 58.
+Error léxico: carácter no reconocido '"' en la línea 35, columna 60.
+Error léxico: carácter no reconocido 'a' en la línea 35, columna 63.
+Error léxico: carácter no reconocido 'l' en la línea 35, columna 64.
+Error léxico: carácter no reconocido 'u' en la línea 35, columna 65.
+Error léxico: carácter no reconocido 'm' en la línea 35, columna 66.
+Error léxico: carácter no reconocido 'n' en la línea 35, columna 67.
+Error léxico: carácter no reconocido 'o' en la línea 35, columna 68.
+Error léxico: carácter no reconocido '2' en la línea 35, columna 70.
+Error léxico: carácter no reconocido '/' en la línea 37, columna 1.
+Error léxico: carácter no reconocido '/' en la línea 37, columna 2.
+Error léxico: carácter no reconocido 'r' en la línea 37, columna 4.
+Error léxico: carácter no reconocido 'e' en la línea 37, columna 5.
+Error léxico: carácter no reconocido 'p' en la línea 37, columna 6.
+Error léxico: carácter no reconocido 'e' en la línea 37, columna 7.
+Error léxico: carácter no reconocido 'a' en la línea 37, columna 8.
+Error léxico: carácter no reconocido 't' en la línea 37, columna 9.
+Error léxico: carácter no reconocido '-' en la línea 37, columna 10.
+Error léxico: carácter no reconocido 'w' en la línea 37, columna 11.
+Error léxico: carácter no reconocido 'h' en la línea 37, columna 12.
+Error léxico: carácter no reconocido 'i' en la línea 37, columna 13.
+Error léxico: carácter no reconocido 'l' en la línea 37, columna 14.
+Error léxico: carácter no reconocido 'e' en la línea 37, columna 15.
+Error léxico: carácter no reconocido 'e' en la línea 37, columna 18.
+Error léxico: carácter no reconocido 'l' en la línea 37, columna 19.
+Error léxico: carácter no reconocido 'b' en la línea 37, columna 21.
+Error léxico: carácter no reconocido 'l' en la línea 37, columna 22.
+Error léxico: carácter no reconocido 'o' en la línea 37, columna 23.
+Error léxico: carácter no reconocido 'q' en la línea 37, columna 24.
+Error léxico: carácter no reconocido 'u' en la línea 37, columna 25.
+Error léxico: carácter no reconocido 'e' en la línea 37, columna 26.
+Error léxico: carácter no reconocido 's' en la línea 37, columna 28.
+Error léxico: carácter no reconocido 'e' en la línea 37, columna 29.
+Error léxico: carácter no reconocido 'e' en la línea 37, columna 31.
+Error léxico: carácter no reconocido 'j' en la línea 37, columna 32.
+Error léxico: carácter no reconocido 'e' en la línea 37, columna 33.
+Error léxico: carácter no reconocido 'c' en la línea 37, columna 34.
+Error léxico: carácter no reconocido 'u' en la línea 37, columna 35.
+Error léxico: carácter no reconocido 't' en la línea 37, columna 36.
+Error léxico: carácter no reconocido 'a' en la línea 37, columna 37.
+Error léxico: carácter no reconocido 'a' en la línea 37, columna 39.
+Error léxico: carácter no reconocido 'l' en la línea 37, columna 40.
+Error léxico: carácter no reconocido 'm' en la línea 37, columna 42.
+Error léxico: carácter no reconocido 'e' en la línea 37, columna 43.
+Error léxico: carácter no reconocido 'n' en la línea 37, columna 44.
+Error léxico: carácter no reconocido 'o' en la línea 37, columna 45.
+Error léxico: carácter no reconocido 's' en la línea 37, columna 46.
+Error léxico: carácter no reconocido 'u' en la línea 37, columna 48.
+Error léxico: carácter no reconocido 'n' en la línea 37, columna 49.
+Error léxico: carácter no reconocido 'a' en la línea 37, columna 50.
+Error léxico: carácter no reconocido 'v' en la línea 37, columna 52.
+Error léxico: carácter no reconocido 'e' en la línea 37, columna 53.
+Error léxico: carácter no reconocido 'z' en la línea 37, columna 54.
+Error léxico: carácter no reconocido 'v' en la línea 38, columna 1.
+Error léxico: carácter no reconocido 'a' en la línea 38, columna 2.
+Error léxico: carácter no reconocido 'r' en la línea 38, columna 3.
+Error léxico: carácter no reconocido 'p' en la línea 38, columna 5.
+Error léxico: carácter no reconocido 'a' en la línea 38, columna 6.
+Error léxico: carácter no reconocido 'r' en la línea 38, columna 7.
+Error léxico: carácter no reconocido 'c' en la línea 38, columna 8.
+Error léxico: carácter no reconocido 'i' en la línea 38, columna 9.
+Error léxico: carácter no reconocido 'a' en la línea 38, columna 10.
+Error léxico: carácter no reconocido 'l' en la línea 38, columna 11.
+Error léxico: carácter no reconocido 'I' en la línea 38, columna 14.
+Error léxico: carácter no reconocido 'n' en la línea 38, columna 15.
+Error léxico: carácter no reconocido 't' en la línea 38, columna 16.
+Error léxico: carácter no reconocido '=' en la línea 38, columna 18.
+Error léxico: carácter no reconocido '1' en la línea 38, columna 20.
+Error léxico: carácter no reconocido 'v' en la línea 39, columna 1.
+Error léxico: carácter no reconocido 'a' en la línea 39, columna 2.
+Error léxico: carácter no reconocido 'r' en la línea 39, columna 3.
+Error léxico: carácter no reconocido 'n' en la línea 39, columna 5.
+Error léxico: carácter no reconocido 'o' en la línea 39, columna 6.
+Error léxico: carácter no reconocido 't' en la línea 39, columna 7.
+Error léxico: carácter no reconocido 'a' en la línea 39, columna 8.
+Error léxico: carácter no reconocido 'D' en la línea 39, columna 11.
+Error léxico: carácter no reconocido 'o' en la línea 39, columna 12.
+Error léxico: carácter no reconocido 'u' en la línea 39, columna 13.
+Error léxico: carácter no reconocido 'b' en la línea 39, columna 14.
+Error léxico: carácter no reconocido 'l' en la línea 39, columna 15.
+Error léxico: carácter no reconocido 'e' en la línea 39, columna 16.
+Error léxico: carácter no reconocido '=' en la línea 39, columna 18.
+Error léxico: carácter no reconocido '6' en la línea 39, columna 20.
+Error léxico: carácter no reconocido '5' en la línea 39, columna 22.
+Error léxico: carácter no reconocido 'v' en la línea 40, columna 1.
+Error léxico: carácter no reconocido 'a' en la línea 40, columna 2.
+Error léxico: carácter no reconocido 'r' en la línea 40, columna 3.
+Error léxico: carácter no reconocido 's' en la línea 40, columna 5.
+Error léxico: carácter no reconocido 'u' en la línea 40, columna 6.
+Error léxico: carácter no reconocido 'm' en la línea 40, columna 7.
+Error léxico: carácter no reconocido 'a' en la línea 40, columna 8.
+Error léxico: carácter no reconocido 'D' en la línea 40, columna 11.
+Error léxico: carácter no reconocido 'o' en la línea 40, columna 12.
+Error léxico: carácter no reconocido 'u' en la línea 40, columna 13.
+Error léxico: carácter no reconocido 'b' en la línea 40, columna 14.
+Error léxico: carácter no reconocido 'l' en la línea 40, columna 15.
+Error léxico: carácter no reconocido 'e' en la línea 40, columna 16.
+Error léxico: carácter no reconocido '=' en la línea 40, columna 18.
+Error léxico: carácter no reconocido '0' en la línea 40, columna 20.
+Error léxico: carácter no reconocido '0' en la línea 40, columna 22.
+Error léxico: carácter no reconocido 'r' en la línea 41, columna 1.
+Error léxico: carácter no reconocido 'e' en la línea 41, columna 2.
+Error léxico: carácter no reconocido 'p' en la línea 41, columna 3.
+Error léxico: carácter no reconocido 'e' en la línea 41, columna 4.
+Error léxico: carácter no reconocido 'a' en la línea 41, columna 5.
+Error léxico: carácter no reconocido 't' en la línea 41, columna 6.
+Error léxico: carácter no reconocido '{' en la línea 41, columna 8.
+Error léxico: carácter no reconocido 'p' en la línea 42, columna 5.
+Error léxico: carácter no reconocido 'r' en la línea 42, columna 6.
+Error léxico: carácter no reconocido 'i' en la línea 42, columna 7.
+Error léxico: carácter no reconocido 'n' en la línea 42, columna 8.
+Error léxico: carácter no reconocido 't' en la línea 42, columna 9.
+Error léxico: carácter no reconocido '"' en la línea 42, columna 11.
+Error léxico: carácter no reconocido 'P' en la línea 42, columna 12.
+Error léxico: carácter no reconocido 'a' en la línea 42, columna 13.
+Error léxico: carácter no reconocido 'r' en la línea 42, columna 14.
+Error léxico: carácter no reconocido 'c' en la línea 42, columna 15.
+Error léxico: carácter no reconocido 'i' en la línea 42, columna 16.
+Error léxico: carácter no reconocido 'a' en la línea 42, columna 17.
+Error léxico: carácter no reconocido 'l' en la línea 42, columna 18.
+Error léxico: carácter no reconocido '"' en la línea 42, columna 19.
+Error léxico: carácter no reconocido 'p' en la línea 42, columna 22.
+Error léxico: carácter no reconocido 'a' en la línea 42, columna 23.
+Error léxico: carácter no reconocido 'r' en la línea 42, columna 24.
+Error léxico: carácter no reconocido 'c' en la línea 42, columna 25.
+Error léxico: carácter no reconocido 'i' en la línea 42, columna 26.
+Error léxico: carácter no reconocido 'a' en la línea 42, columna 27.
+Error léxico: carácter no reconocido 'l' en la línea 42, columna 28.
+Error léxico: carácter no reconocido '"' en la línea 42, columna 31.
+Error léxico: carácter no reconocido 'n' en la línea 42, columna 32.
+Error léxico: carácter no reconocido 'o' en la línea 42, columna 33.
+Error léxico: carácter no reconocido 't' en la línea 42, columna 34.
+Error léxico: carácter no reconocido 'a' en la línea 42, columna 35.
+Error léxico: carácter no reconocido '"' en la línea 42, columna 37.
+Error léxico: carácter no reconocido 'n' en la línea 42, columna 40.
+Error léxico: carácter no reconocido 'o' en la línea 42, columna 41.
+Error léxico: carácter no reconocido 't' en la línea 42, columna 42.
+Error léxico: carácter no reconocido 'a' en la línea 42, columna 43.
+Error léxico: carácter no reconocido 's' en la línea 43, columna 5.
+Error léxico: carácter no reconocido 'u' en la línea 43, columna 6.
+Error léxico: carácter no reconocido 'm' en la línea 43, columna 7.
+Error léxico: carácter no reconocido 'a' en la línea 43, columna 8.
+Error léxico: carácter no reconocido '+' en la línea 43, columna 10.
+Error léxico: carácter no reconocido '=' en la línea 43, columna 11.
+Error léxico: carácter no reconocido 'n' en la línea 43, columna 13.
+Error léxico: carácter no reconocido 'o' en la línea 43, columna 14.
+Error léxico: carácter no reconocido 't' en la línea 43, columna 15.
+Error léxico: carácter no reconocido 'a' en la línea 43, columna 16.
+Error léxico: carácter no reconocido 'n' en la línea 44, columna 5.
+Error léxico: carácter no reconocido 'o' en la línea 44, columna 6.
+Error léxico: carácter no reconocido 't' en la línea 44, columna 7.
+Error léxico: carácter no reconocido 'a' en la línea 44, columna 8.
+Error léxico: carácter no reconocido '+' en la línea 44, columna 10.
+Error léxico: carácter no reconocido '=' en la línea 44, columna 11.
+Error léxico: carácter no reconocido '1' en la línea 44, columna 13.
+Error léxico: carácter no reconocido '0' en la línea 44, columna 15.
+Error léxico: carácter no reconocido 'p' en la línea 45, columna 5.
+Error léxico: carácter no reconocido 'a' en la línea 45, columna 6.
+Error léxico: carácter no reconocido 'r' en la línea 45, columna 7.
+Error léxico: carácter no reconocido 'c' en la línea 45, columna 8.
+Error léxico: carácter no reconocido 'i' en la línea 45, columna 9.
+Error léxico: carácter no reconocido 'a' en la línea 45, columna 10.
+Error léxico: carácter no reconocido 'l' en la línea 45, columna 11.
+Error léxico: carácter no reconocido '+' en la línea 45, columna 13.
+Error léxico: carácter no reconocido '=' en la línea 45, columna 14.
+Error léxico: carácter no reconocido '1' en la línea 45, columna 16.
+Error léxico: carácter no reconocido '}' en la línea 46, columna 1.
+Error léxico: carácter no reconocido 'w' en la línea 46, columna 3.
+Error léxico: carácter no reconocido 'h' en la línea 46, columna 4.
+Error léxico: carácter no reconocido 'i' en la línea 46, columna 5.
+Error léxico: carácter no reconocido 'l' en la línea 46, columna 6.
+Error léxico: carácter no reconocido 'e' en la línea 46, columna 7.
+Error léxico: carácter no reconocido 'p' en la línea 46, columna 9.
+Error léxico: carácter no reconocido 'a' en la línea 46, columna 10.
+Error léxico: carácter no reconocido 'r' en la línea 46, columna 11.
+Error léxico: carácter no reconocido 'c' en la línea 46, columna 12.
+Error léxico: carácter no reconocido 'i' en la línea 46, columna 13.
+Error léxico: carácter no reconocido 'a' en la línea 46, columna 14.
+Error léxico: carácter no reconocido 'l' en la línea 46, columna 15.
+Error léxico: carácter no reconocido '<' en la línea 46, columna 17.
+Error léxico: carácter no reconocido '=' en la línea 46, columna 18.
+Error léxico: carácter no reconocido 't' en la línea 46, columna 20.
+Error léxico: carácter no reconocido 'o' en la línea 46, columna 21.
+Error léxico: carácter no reconocido 't' en la línea 46, columna 22.
+Error léxico: carácter no reconocido 'a' en la línea 46, columna 23.
+Error léxico: carácter no reconocido 'l' en la línea 46, columna 24.
+Error léxico: carácter no reconocido 'P' en la línea 46, columna 25.
+Error léxico: carácter no reconocido 'a' en la línea 46, columna 26.
+Error léxico: carácter no reconocido 'r' en la línea 46, columna 27.
+Error léxico: carácter no reconocido 'c' en la línea 46, columna 28.
+Error léxico: carácter no reconocido 'i' en la línea 46, columna 29.
+Error léxico: carácter no reconocido 'a' en la línea 46, columna 30.
+Error léxico: carácter no reconocido 'l' en la línea 46, columna 31.
+Error léxico: carácter no reconocido 'e' en la línea 46, columna 32.
+Error léxico: carácter no reconocido 's' en la línea 46, columna 33.
+Error léxico: carácter no reconocido 'l' en la línea 48, columna 1.
+Error léxico: carácter no reconocido 'e' en la línea 48, columna 2.
+Error léxico: carácter no reconocido 't' en la línea 48, columna 3.
+Error léxico: carácter no reconocido 'p' en la línea 48, columna 5.
+Error léxico: carácter no reconocido 'r' en la línea 48, columna 6.
+Error léxico: carácter no reconocido 'o' en la línea 48, columna 7.
+Error léxico: carácter no reconocido 'm' en la línea 48, columna 8.
+Error léxico: carácter no reconocido 'e' en la línea 48, columna 9.
+Error léxico: carácter no reconocido 'd' en la línea 48, columna 10.
+Error léxico: carácter no reconocido 'i' en la línea 48, columna 11.
+Error léxico: carácter no reconocido 'o' en la línea 48, columna 12.
+Error léxico: carácter no reconocido 'D' en la línea 48, columna 15.
+Error léxico: carácter no reconocido 'o' en la línea 48, columna 16.
+Error léxico: carácter no reconocido 'u' en la línea 48, columna 17.
+Error léxico: carácter no reconocido 'b' en la línea 48, columna 18.
+Error léxico: carácter no reconocido 'l' en la línea 48, columna 19.
+Error léxico: carácter no reconocido 'e' en la línea 48, columna 20.
+Error léxico: carácter no reconocido '=' en la línea 48, columna 22.
+Error léxico: carácter no reconocido 's' en la línea 48, columna 24.
+Error léxico: carácter no reconocido 'u' en la línea 48, columna 25.
+Error léxico: carácter no reconocido 'm' en la línea 48, columna 26.
+Error léxico: carácter no reconocido 'a' en la línea 48, columna 27.
+Error léxico: carácter no reconocido '/' en la línea 48, columna 29.
+Error léxico: carácter no reconocido '3' en la línea 48, columna 31.
+Error léxico: carácter no reconocido '0' en la línea 48, columna 33.
+Error léxico: carácter no reconocido 'l' en la línea 49, columna 1.
+Error léxico: carácter no reconocido 'e' en la línea 49, columna 2.
+Error léxico: carácter no reconocido 't' en la línea 49, columna 3.
+Error léxico: carácter no reconocido 'r' en la línea 49, columna 5.
+Error léxico: carácter no reconocido 'e' en la línea 49, columna 6.
+Error léxico: carácter no reconocido 's' en la línea 49, columna 7.
+Error léxico: carácter no reconocido 'u' en la línea 49, columna 8.
+Error léxico: carácter no reconocido 'l' en la línea 49, columna 9.
+Error léxico: carácter no reconocido 't' en la línea 49, columna 10.
+Error léxico: carácter no reconocido 'a' en la línea 49, columna 11.
+Error léxico: carácter no reconocido 'd' en la línea 49, columna 12.
+Error léxico: carácter no reconocido 'o' en la línea 49, columna 13.
+Error léxico: carácter no reconocido 'D' en la línea 49, columna 17.
+Error léxico: carácter no reconocido 'o' en la línea 49, columna 18.
+Error léxico: carácter no reconocido 'u' en la línea 49, columna 19.
+Error léxico: carácter no reconocido 'b' en la línea 49, columna 20.
+Error léxico: carácter no reconocido 'l' en la línea 49, columna 21.
+Error léxico: carácter no reconocido 'e' en la línea 49, columna 22.
+Error léxico: carácter no reconocido 'B' en la línea 49, columna 25.
+Error léxico: carácter no reconocido 'o' en la línea 49, columna 26.
+Error léxico: carácter no reconocido 'o' en la línea 49, columna 27.
+Error léxico: carácter no reconocido 'l' en la línea 49, columna 28.
+Error léxico: carácter no reconocido '=' en la línea 49, columna 31.
+Error léxico: carácter no reconocido 'e' en la línea 49, columna 33.
+Error léxico: carácter no reconocido 'v' en la línea 49, columna 34.
+Error léxico: carácter no reconocido 'a' en la línea 49, columna 35.
+Error léxico: carácter no reconocido 'l' en la línea 49, columna 36.
+Error léxico: carácter no reconocido 'u' en la línea 49, columna 37.
+Error léxico: carácter no reconocido 'a' en la línea 49, columna 38.
+Error léxico: carácter no reconocido 'r' en la línea 49, columna 39.
+Error léxico: carácter no reconocido 'n' en la línea 49, columna 41.
+Error léxico: carácter no reconocido 'o' en la línea 49, columna 42.
+Error léxico: carácter no reconocido 't' en la línea 49, columna 43.
+Error léxico: carácter no reconocido 'a' en la línea 49, columna 44.
+Error léxico: carácter no reconocido 'p' en la línea 49, columna 47.
+Error léxico: carácter no reconocido 'r' en la línea 49, columna 48.
+Error léxico: carácter no reconocido 'o' en la línea 49, columna 49.
+Error léxico: carácter no reconocido 'm' en la línea 49, columna 50.
+Error léxico: carácter no reconocido 'e' en la línea 49, columna 51.
+Error léxico: carácter no reconocido 'd' en la línea 49, columna 52.
+Error léxico: carácter no reconocido 'i' en la línea 49, columna 53.
+Error léxico: carácter no reconocido 'o' en la línea 49, columna 54.
+Error léxico: carácter no reconocido 'm' en la línea 49, columna 57.
+Error léxico: carácter no reconocido 'i' en la línea 49, columna 58.
+Error léxico: carácter no reconocido 'n' en la línea 49, columna 59.
+Error léxico: carácter no reconocido 'i' en la línea 49, columna 60.
+Error léxico: carácter no reconocido 'm' en la línea 49, columna 61.
+Error léxico: carácter no reconocido 'o' en la línea 49, columna 62.
+Error léxico: carácter no reconocido 'n' en la línea 49, columna 65.
+Error léxico: carácter no reconocido 'o' en la línea 49, columna 66.
+Error léxico: carácter no reconocido 't' en la línea 49, columna 67.
+Error léxico: carácter no reconocido 'a' en la línea 49, columna 68.
+Error léxico: carácter no reconocido 'M' en la línea 49, columna 69.
+Error léxico: carácter no reconocido 'i' en la línea 49, columna 70.
+Error léxico: carácter no reconocido 'n' en la línea 49, columna 71.
+Error léxico: carácter no reconocido 'i' en la línea 49, columna 72.
+Error léxico: carácter no reconocido 'm' en la línea 49, columna 73.
+Error léxico: carácter no reconocido 'a' en la línea 49, columna 74.
+Error léxico: carácter no reconocido 'l' en la línea 50, columna 1.
+Error léxico: carácter no reconocido 'e' en la línea 50, columna 2.
+Error léxico: carácter no reconocido 't' en la línea 50, columna 3.
+Error léxico: carácter no reconocido 'r' en la línea 50, columna 5.
+Error léxico: carácter no reconocido 'e' en la línea 50, columna 6.
+Error léxico: carácter no reconocido 's' en la línea 50, columna 7.
+Error léxico: carácter no reconocido 'u' en la línea 50, columna 8.
+Error léxico: carácter no reconocido 'l' en la línea 50, columna 9.
+Error léxico: carácter no reconocido 't' en la línea 50, columna 10.
+Error léxico: carácter no reconocido 'a' en la línea 50, columna 11.
+Error léxico: carácter no reconocido 'd' en la línea 50, columna 12.
+Error léxico: carácter no reconocido 'o' en la línea 50, columna 13.
+Error léxico: carácter no reconocido 'P' en la línea 50, columna 14.
+Error léxico: carácter no reconocido 'o' en la línea 50, columna 15.
+Error léxico: carácter no reconocido 'r' en la línea 50, columna 16.
+Error léxico: carácter no reconocido 'D' en la línea 50, columna 17.
+Error léxico: carácter no reconocido 'e' en la línea 50, columna 18.
+Error léxico: carácter no reconocido 'f' en la línea 50, columna 19.
+Error léxico: carácter no reconocido 'e' en la línea 50, columna 20.
+Error léxico: carácter no reconocido 'c' en la línea 50, columna 21.
+Error léxico: carácter no reconocido 't' en la línea 50, columna 22.
+Error léxico: carácter no reconocido 'o' en la línea 50, columna 23.
+Error léxico: carácter no reconocido 'D' en la línea 50, columna 27.
+Error léxico: carácter no reconocido 'o' en la línea 50, columna 28.
+Error léxico: carácter no reconocido 'u' en la línea 50, columna 29.
+Error léxico: carácter no reconocido 'b' en la línea 50, columna 30.
+Error léxico: carácter no reconocido 'l' en la línea 50, columna 31.
+Error léxico: carácter no reconocido 'e' en la línea 50, columna 32.
+Error léxico: carácter no reconocido 'B' en la línea 50, columna 35.
+Error léxico: carácter no reconocido 'o' en la línea 50, columna 36.
+Error léxico: carácter no reconocido 'o' en la línea 50, columna 37.
+Error léxico: carácter no reconocido 'l' en la línea 50, columna 38.
+Error léxico: carácter no reconocido '=' en la línea 50, columna 41.
+Error léxico: carácter no reconocido 'e' en la línea 50, columna 43.
+Error léxico: carácter no reconocido 'v' en la línea 50, columna 44.
+Error léxico: carácter no reconocido 'a' en la línea 50, columna 45.
+Error léxico: carácter no reconocido 'l' en la línea 50, columna 46.
+Error léxico: carácter no reconocido 'u' en la línea 50, columna 47.
+Error léxico: carácter no reconocido 'a' en la línea 50, columna 48.
+Error léxico: carácter no reconocido 'r' en la línea 50, columna 49.
+Error léxico: carácter no reconocido 'n' en la línea 50, columna 51.
+Error léxico: carácter no reconocido 'o' en la línea 50, columna 52.
+Error léxico: carácter no reconocido 't' en la línea 50, columna 53.
+Error léxico: carácter no reconocido 'a' en la línea 50, columna 54.
+Error léxico: carácter no reconocido '6' en la línea 50, columna 57.
+Error léxico: carácter no reconocido '0' en la línea 50, columna 59.
+Error léxico: carácter no reconocido 'p' en la línea 52, columna 1.
+Error léxico: carácter no reconocido 'r' en la línea 52, columna 2.
+Error léxico: carácter no reconocido 'i' en la línea 52, columna 3.
+Error léxico: carácter no reconocido 'n' en la línea 52, columna 4.
+Error léxico: carácter no reconocido 't' en la línea 52, columna 5.
+Error léxico: carácter no reconocido '"' en la línea 52, columna 7.
+Error léxico: carácter no reconocido 'P' en la línea 52, columna 8.
+Error léxico: carácter no reconocido 'r' en la línea 52, columna 9.
+Error léxico: carácter no reconocido 'o' en la línea 52, columna 10.
+Error léxico: carácter no reconocido 'm' en la línea 52, columna 11.
+Error léxico: carácter no reconocido 'e' en la línea 52, columna 12.
+Error léxico: carácter no reconocido 'd' en la línea 52, columna 13.
+Error léxico: carácter no reconocido 'i' en la línea 52, columna 14.
+Error léxico: carácter no reconocido 'o' en la línea 52, columna 15.
+Error léxico: carácter no reconocido '"' en la línea 52, columna 17.
+Error léxico: carácter no reconocido 'r' en la línea 52, columna 20.
+Error léxico: carácter no reconocido 'e' en la línea 52, columna 21.
+Error léxico: carácter no reconocido 's' en la línea 52, columna 22.
+Error léxico: carácter no reconocido 'u' en la línea 52, columna 23.
+Error léxico: carácter no reconocido 'l' en la línea 52, columna 24.
+Error léxico: carácter no reconocido 't' en la línea 52, columna 25.
+Error léxico: carácter no reconocido 'a' en la línea 52, columna 26.
+Error léxico: carácter no reconocido 'd' en la línea 52, columna 27.
+Error léxico: carácter no reconocido 'o' en la línea 52, columna 28.
+Error léxico: carácter no reconocido '0' en la línea 52, columna 30.
+Error léxico: carácter no reconocido '"' en la línea 52, columna 33.
+Error léxico: carácter no reconocido '-' en la línea 52, columna 34.
+Error léxico: carácter no reconocido 'A' en la línea 52, columna 36.
+Error léxico: carácter no reconocido 'p' en la línea 52, columna 37.
+Error léxico: carácter no reconocido 'r' en la línea 52, columna 38.
+Error léxico: carácter no reconocido 'o' en la línea 52, columna 39.
+Error léxico: carácter no reconocido 'b' en la línea 52, columna 40.
+Error léxico: carácter no reconocido 'a' en la línea 52, columna 41.
+Error léxico: carácter no reconocido 'd' en la línea 52, columna 42.
+Error léxico: carácter no reconocido 'o' en la línea 52, columna 43.
+Error léxico: carácter no reconocido '"' en la línea 52, columna 45.
+Error léxico: carácter no reconocido 'r' en la línea 52, columna 48.
+Error léxico: carácter no reconocido 'e' en la línea 52, columna 49.
+Error léxico: carácter no reconocido 's' en la línea 52, columna 50.
+Error léxico: carácter no reconocido 'u' en la línea 52, columna 51.
+Error léxico: carácter no reconocido 'l' en la línea 52, columna 52.
+Error léxico: carácter no reconocido 't' en la línea 52, columna 53.
+Error léxico: carácter no reconocido 'a' en la línea 52, columna 54.
+Error léxico: carácter no reconocido 'd' en la línea 52, columna 55.
+Error léxico: carácter no reconocido 'o' en la línea 52, columna 56.
+Error léxico: carácter no reconocido '1' en la línea 52, columna 58.
+Error léxico: carácter no reconocido 'p' en la línea 53, columna 1.
+Error léxico: carácter no reconocido 'r' en la línea 53, columna 2.
+Error léxico: carácter no reconocido 'i' en la línea 53, columna 3.
+Error léxico: carácter no reconocido 'n' en la línea 53, columna 4.
+Error léxico: carácter no reconocido 't' en la línea 53, columna 5.
+Error léxico: carácter no reconocido '"' en la línea 53, columna 7.
+Error léxico: carácter no reconocido 'C' en la línea 53, columna 8.
+Error léxico: carácter no reconocido 'o' en la línea 53, columna 9.
+Error léxico: carácter no reconocido 'n' en la línea 53, columna 10.
+Error léxico: carácter no reconocido '6' en la línea 53, columna 12.
+Error léxico: carácter no reconocido '0' en la línea 53, columna 14.
+Error léxico: carácter no reconocido 'a' en la línea 53, columna 16.
+Error léxico: carácter no reconocido 'p' en la línea 53, columna 17.
+Error léxico: carácter no reconocido 'r' en la línea 53, columna 18.
+Error léxico: carácter no reconocido 'u' en la línea 53, columna 19.
+Error léxico: carácter no reconocido 'e' en la línea 53, columna 20.
+Error léxico: carácter no reconocido 'b' en la línea 53, columna 21.
+Error léxico: carácter no reconocido 'a' en la línea 53, columna 22.
+Error léxico: carácter no reconocido '"' en la línea 53, columna 24.
+Error léxico: carácter no reconocido 'r' en la línea 53, columna 27.
+Error léxico: carácter no reconocido 'e' en la línea 53, columna 28.
+Error léxico: carácter no reconocido 's' en la línea 53, columna 29.
+Error léxico: carácter no reconocido 'u' en la línea 53, columna 30.
+Error léxico: carácter no reconocido 'l' en la línea 53, columna 31.
+Error léxico: carácter no reconocido 't' en la línea 53, columna 32.
+Error léxico: carácter no reconocido 'a' en la línea 53, columna 33.
+Error léxico: carácter no reconocido 'd' en la línea 53, columna 34.
+Error léxico: carácter no reconocido 'o' en la línea 53, columna 35.
+Error léxico: carácter no reconocido 'P' en la línea 53, columna 36.
+Error léxico: carácter no reconocido 'o' en la línea 53, columna 37.
+Error léxico: carácter no reconocido 'r' en la línea 53, columna 38.
+Error léxico: carácter no reconocido 'D' en la línea 53, columna 39.
+Error léxico: carácter no reconocido 'e' en la línea 53, columna 40.
+Error léxico: carácter no reconocido 'f' en la línea 53, columna 41.
+Error léxico: carácter no reconocido 'e' en la línea 53, columna 42.
+Error léxico: carácter no reconocido 'c' en la línea 53, columna 43.
+Error léxico: carácter no reconocido 't' en la línea 53, columna 44.
+Error léxico: carácter no reconocido 'o' en la línea 53, columna 45.
+Error léxico: carácter no reconocido '1' en la línea 53, columna 47.
+Error léxico: carácter no reconocido 'p' en la línea 54, columna 1.
+Error léxico: carácter no reconocido 'r' en la línea 54, columna 2.
+Error léxico: carácter no reconocido 'i' en la línea 54, columna 3.
+Error léxico: carácter no reconocido 'n' en la línea 54, columna 4.
+Error léxico: carácter no reconocido 't' en la línea 54, columna 5.
+Error léxico: carácter no reconocido '"' en la línea 54, columna 7.
+Error léxico: carácter no reconocido 'M' en la línea 54, columna 8.
+Error léxico: carácter no reconocido 'e' en la línea 54, columna 9.
+Error léxico: carácter no reconocido 'j' en la línea 54, columna 10.
+Error léxico: carácter no reconocido 'o' en la línea 54, columna 11.
+Error léxico: carácter no reconocido 'r' en la línea 54, columna 12.
+Error léxico: carácter no reconocido 'p' en la línea 54, columna 14.
+Error léxico: carácter no reconocido 'a' en la línea 54, columna 15.
+Error léxico: carácter no reconocido 'r' en la línea 54, columna 16.
+Error léxico: carácter no reconocido 'c' en la línea 54, columna 17.
+Error léxico: carácter no reconocido 'i' en la línea 54, columna 18.
+Error léxico: carácter no reconocido 'a' en la línea 54, columna 19.
+Error léxico: carácter no reconocido 'l' en la línea 54, columna 20.
+Error léxico: carácter no reconocido '"' en la línea 54, columna 22.
+Error léxico: carácter no reconocido 'm' en la línea 54, columna 25.
+Error léxico: carácter no reconocido 'e' en la línea 54, columna 26.
+Error léxico: carácter no reconocido 'j' en la línea 54, columna 27.
+Error léxico: carácter no reconocido 'o' en la línea 54, columna 28.
+Error léxico: carácter no reconocido 'r' en la línea 54, columna 29.
+Error léxico: carácter no reconocido 'P' en la línea 54, columna 30.
+Error léxico: carácter no reconocido 'a' en la línea 54, columna 31.
+Error léxico: carácter no reconocido 'r' en la línea 54, columna 32.
+Error léxico: carácter no reconocido 'c' en la línea 54, columna 33.
+Error léxico: carácter no reconocido 'i' en la línea 54, columna 34.
+Error léxico: carácter no reconocido 'a' en la línea 54, columna 35.
+Error léxico: carácter no reconocido 'l' en la línea 54, columna 36.
+Error léxico: carácter no reconocido '0' en la línea 54, columna 38.
+Error léxico: carácter no reconocido '"' en la línea 54, columna 41.
+Error léxico: carácter no reconocido 'c' en la línea 54, columna 42.
+Error léxico: carácter no reconocido 'o' en la línea 54, columna 43.
+Error léxico: carácter no reconocido 'n' en la línea 54, columna 44.
+Error léxico: carácter no reconocido '"' en la línea 54, columna 45.
+Error léxico: carácter no reconocido 'm' en la línea 54, columna 48.
+Error léxico: carácter no reconocido 'e' en la línea 54, columna 49.
+Error léxico: carácter no reconocido 'j' en la línea 54, columna 50.
+Error léxico: carácter no reconocido 'o' en la línea 54, columna 51.
+Error léxico: carácter no reconocido 'r' en la línea 54, columna 52.
+Error léxico: carácter no reconocido 'P' en la línea 54, columna 53.
+Error léxico: carácter no reconocido 'a' en la línea 54, columna 54.
+Error léxico: carácter no reconocido 'r' en la línea 54, columna 55.
+Error léxico: carácter no reconocido 'c' en la línea 54, columna 56.
+Error léxico: carácter no reconocido 'i' en la línea 54, columna 57.
+Error léxico: carácter no reconocido 'a' en la línea 54, columna 58.
+Error léxico: carácter no reconocido 'l' en la línea 54, columna 59.
+Error léxico: carácter no reconocido '1' en la línea 54, columna 61.
+Error léxico: carácter no reconocido 'l' en la línea 56, columna 1.
+Error léxico: carácter no reconocido 'e' en la línea 56, columna 2.
+Error léxico: carácter no reconocido 't' en la línea 56, columna 3.
+Error léxico: carácter no reconocido 'r' en la línea 56, columna 5.
+Error léxico: carácter no reconocido 'e' en la línea 56, columna 6.
+Error léxico: carácter no reconocido 's' en la línea 56, columna 7.
+Error léxico: carácter no reconocido 't' en la línea 56, columna 8.
+Error léxico: carácter no reconocido 'a' en la línea 56, columna 9.
+Error léxico: carácter no reconocido 'n' en la línea 56, columna 10.
+Error léxico: carácter no reconocido 't' en la línea 56, columna 11.
+Error léxico: carácter no reconocido 'e' en la línea 56, columna 12.
+Error léxico: carácter no reconocido 'I' en la línea 56, columna 15.
+Error léxico: carácter no reconocido 'n' en la línea 56, columna 16.
+Error léxico: carácter no reconocido 't' en la línea 56, columna 17.
+Error léxico: carácter no reconocido '=' en la línea 56, columna 19.
+Error léxico: carácter no reconocido 'c' en la línea 56, columna 21.
+Error léxico: carácter no reconocido 'u' en la línea 56, columna 22.
+Error léxico: carácter no reconocido 'e' en la línea 56, columna 23.
+Error léxico: carácter no reconocido 'n' en la línea 56, columna 24.
+Error léxico: carácter no reconocido 't' en la línea 56, columna 25.
+Error léxico: carácter no reconocido 'a' en la línea 56, columna 26.
+Error léxico: carácter no reconocido 'R' en la línea 56, columna 27.
+Error léxico: carácter no reconocido 'e' en la línea 56, columna 28.
+Error léxico: carácter no reconocido 'g' en la línea 56, columna 29.
+Error léxico: carácter no reconocido 'r' en la línea 56, columna 30.
+Error léxico: carácter no reconocido 'e' en la línea 56, columna 31.
+Error léxico: carácter no reconocido 's' en la línea 56, columna 32.
+Error léxico: carácter no reconocido 'i' en la línea 56, columna 33.
+Error léxico: carácter no reconocido 'v' en la línea 56, columna 34.
+Error léxico: carácter no reconocido 'a' en la línea 56, columna 35.
+Error léxico: carácter no reconocido 'p' en la línea 57, columna 1.
+Error léxico: carácter no reconocido 'r' en la línea 57, columna 2.
+Error léxico: carácter no reconocido 'i' en la línea 57, columna 3.
+Error léxico: carácter no reconocido 'n' en la línea 57, columna 4.
+Error léxico: carácter no reconocido 't' en la línea 57, columna 5.
+Error léxico: carácter no reconocido '"' en la línea 57, columna 7.
+Error léxico: carácter no reconocido 'F' en la línea 57, columna 8.
+Error léxico: carácter no reconocido 'i' en la línea 57, columna 9.
+Error léxico: carácter no reconocido 'n' en la línea 57, columna 10.
+Error léxico: carácter no reconocido 'd' en la línea 57, columna 12.
+Error léxico: carácter no reconocido 'e' en la línea 57, columna 13.
+Error léxico: carácter no reconocido 'l' en la línea 57, columna 15.
+Error léxico: carácter no reconocido 'a' en la línea 57, columna 16.
+Error léxico: carácter no reconocido 'c' en la línea 57, columna 18.
+Error léxico: carácter no reconocido 'u' en la línea 57, columna 19.
+Error léxico: carácter no reconocido 'e' en la línea 57, columna 20.
+Error léxico: carácter no reconocido 'n' en la línea 57, columna 21.
+Error léxico: carácter no reconocido 't' en la línea 57, columna 22.
+Error léxico: carácter no reconocido 'a' en la línea 57, columna 23.
+Error léxico: carácter no reconocido '"' en la línea 57, columna 25.
+Error léxico: carácter no reconocido 'r' en la línea 57, columna 28.
+Error léxico: carácter no reconocido 'e' en la línea 57, columna 29.
+Error léxico: carácter no reconocido 's' en la línea 57, columna 30.
+Error léxico: carácter no reconocido 't' en la línea 57, columna 31.
+Error léxico: carácter no reconocido 'a' en la línea 57, columna 32.
+Error léxico: carácter no reconocido 'n' en la línea 57, columna 33.
+Error léxico: carácter no reconocido 't' en la línea 57, columna 34.
+Error léxico: carácter no reconocido 'e' en la línea 57, columna 35.
