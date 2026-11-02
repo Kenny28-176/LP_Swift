@@ -30,7 +30,23 @@ reserved = {}
 tokens = []
 
 # ===================== Inicio aporte: Kevin Morales =====================
-# Pendiente. Tokens asignados: var, for, in, ..., ..<, [ ]
+reserved.update({
+    'var': 'VAR',
+    'for': 'FOR',
+    'in': 'IN',
+})
+
+tokens += [
+    'CLOSED_RANGE',     # ...   rango cerrado
+    'HALF_OPEN_RANGE',  # ..<   rango semiabierto
+    'LBRACKET',         # [     delimitador de arreglo/diccionario
+    'RBRACKET',         # ]
+]
+
+t_CLOSED_RANGE = r'\.\.\.'
+t_HALF_OPEN_RANGE = r'\.\.<'
+t_LBRACKET = r'\['
+t_RBRACKET = r'\]'
 # ====================== Fin aporte: Kevin Morales =======================
 
 # ====================== Inicio aporte: Kenny Chung ======================
