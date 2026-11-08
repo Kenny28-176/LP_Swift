@@ -119,35 +119,54 @@ def p_acceso_arreglo(p):
 
 # ===================== Inicio aporte: Kenny Chung ======================
 
-# -----------------------------------------------------------------------
-# APORTE PENDIENTE: KENNY CHUNG
-#
-# Instrucciones:
-# Implementar las reglas sintácticas correspondientes a las siguientes
-# contribuciones, tomando como referencia el algoritmo de Kenny:
-#
-# 1. Estructura de datos: TUPLAS.
-#    (Reconocer la declaración de tuplas con elementos de distintos tipos,
-#    sus valores y el acceso a sus elementos mediante índices, por ejemplo:
-#    alumno.0 y alumno.1).
-#
-# 2. Estructura de control: REPEAT-WHILE.
-#    (Reconocer el bloque repeat { ... } while condición, permitiendo
-#    instrucciones dentro del bloque).
-#
-# 3. Tipo de función: FUNCIONES CON PARÁMETROS POR DEFECTO.
-#    (Reconocer funciones cuyos parámetros tengan valores iniciales,
-#    por ejemplo: func saludar(nombre: String = "estudiante") -> String).
-#
-# Importante:
-# - Utilizar los tokens definidos en lexer.py.
-# - Integrar las reglas con las producciones existentes.
-# - Revisar las reglas auxiliares comunes antes de crear otras nuevas.
-# - No duplicar producciones que ya existan.
-# - Comentar las reglas implementadas.
-# - Probar el algoritmo_KennyChung.swift completo.
-# - No modificar las contribuciones de Kevin ni Miguel.
-#
+# ---------------------------------------------------------------------------
+# 1. Estructura de datos: TUPLAS
+# ---------------------------------------------------------------------------
+# El tipo de una tupla, por ejemplo (String, Int, Bool), lo reconoce la regla
+# común p_tipo. Aquí se agregan las reglas que faltaban para declararlas,
+# crear sus valores y acceder a sus elementos.
+
+# Constante con tipo explícito. Sirve para declarar tuplas con elementos de
+# distintos tipos:
+#   let curso: String = "Lenguajes de Programacion"
+#   let alumno: (String, Int, Bool) = ("Ana", 20, true)
+# (las reglas comunes cubren 'let' sin tipo y la de Kevin cubre 'var' con tipo)
+def p_sentencia_let_explicita(p):
+    '''sentencia : LET ID COLON tipo ASSIGN expresion'''
+    p[0] = ('declaracion_let_explicita', p[2], p[4], p[6])
+
+# Valor de una tupla: dos o más expresiones separadas por coma, entre paréntesis.
+#   ("Ana", 20, true)        (nota, nota >= minimo)
+# Una sola expresión entre paréntesis sigue siendo una expresión agrupada
+# (p_expresion_parentesis).
+def p_expresion_tupla(p):
+    '''expresion : LPAREN expresion COMMA lista_expresiones RPAREN'''
+    p[0] = ('tupla_literal', [p[2]] + p[4])
+
+# Acceso a un elemento de la tupla mediante su índice:  alumno.0   alumno.1
+def p_acceso_tupla(p):
+    '''expresion : ID DOT INT'''
+    p[0] = ('acceso_tupla', p[1], p[3])
+
+# ---------------------------------------------------------------------------
+# 2. Estructura de control: REPEAT-WHILE
+# ---------------------------------------------------------------------------
+# repeat { instrucciones } while condicion
+# El bloque se ejecuta al menos una vez; la condición se escribe después de él.
+def p_sentencia_repeat_while(p):
+    '''sentencia : REPEAT LBRACE lista_sentencias_opt RBRACE WHILE expresion'''
+    p[0] = ('bucle_repeat_while', p[6], p[3])
+
+# ---------------------------------------------------------------------------
+# 3. Tipo de función: FUNCIONES CON PARÁMETROS POR DEFECTO
+# ---------------------------------------------------------------------------
+# No necesita producciones nuevas: ya las cubren las reglas comunes, y
+# duplicarlas haría fallar la construcción del parser.
+#   - p_parametro (ID COLON tipo ASSIGN expresion) acepta el valor por defecto.
+#   - p_funcion_multiple_parametros (Kevin) define func ... -> tipo { ... }.
+#   - p_argumentos y p_argumento permiten llamar con o sin argumentos:
+#       saludar()    saludar(nombre: alumno.0)    evaluar(nota: 6.0)
+# Ejemplo: func saludar(nombre: String = "estudiante") -> String { ... }
 
 # ====================== Fin aporte: Kenny Chung =======================
 
