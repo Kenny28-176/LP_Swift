@@ -9,6 +9,7 @@
 # Cada ejecución genera un log en logs/lexico-NombreApellido-dd-mm-aaaa-HHhMM.txt
 # con los tokens reconocidos y los errores léxicos.
 
+
 import os
 import sys
 from datetime import datetime
@@ -84,11 +85,11 @@ reserved.update({
     'nil': 'NIL',
     'print': 'PRINT',
     'readLine': 'READLINE',
-    'Int': 'TIPO',          # los tipos de dato comparten un mismo token
-    'Double': 'TIPO',
-    'String': 'TIPO',
-    'Bool': 'TIPO',
-    'Character': 'TIPO',
+    'Int': 'TYPE_INT',              # Token específico para Int
+    'Double': 'TYPE_DOUBLE',        # Token específico para Double
+    'String': 'TYPE_STRING',        # Token específico para String
+    'Bool': 'TYPE_BOOL',            # Token específico para Bool
+    'Character': 'TYPE_CHARACTER',  # Token específico para Character
     'switch': 'SWITCH',
     'case': 'CASE',
     'default': 'DEFAULT',
