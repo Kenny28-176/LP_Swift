@@ -430,10 +430,7 @@ def escribir_log_sintactico(usuario_git, archivo, errores):
 
     os.makedirs(lexer_module.CARPETA_LOGS, exist_ok=True)
 
-    nombre_log = (
-        f"sintactico-{usuario_git}-{ahora:%d%m%Y-%Hh%M}.txt"
-    )
-
+    nombre_log = f"sintactico-{usuario_git}-{ahora:%d%m%Y-%Hh%M}.txt"
     ruta = os.path.join(lexer_module.CARPETA_LOGS, nombre_log)
 
     lineas = [
@@ -445,9 +442,7 @@ def escribir_log_sintactico(usuario_git, archivo, errores):
         f"ERRORES SINTÁCTICOS ({len(errores)})"
     ]
 
-    lineas += errores or [
-        "Ninguno. El archivo cumple las reglas sintácticas."
-    ]
+    lineas += errores or ["Ninguno. No se encontraron errores sintácticos."]
 
     with open(ruta, 'w', encoding='utf-8') as archivo_log:
         archivo_log.write('\n'.join(lineas) + '\n')
@@ -497,7 +492,6 @@ if __name__ == '__main__':
         lexer=lexer_sintactico,
         tracking=True
     )
-
     ruta_log_sintactico = escribir_log_sintactico(
         usuario_git,
         archivo,
