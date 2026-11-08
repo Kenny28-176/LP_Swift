@@ -1,0 +1,7 @@
+Análisis sintáctico de Swift (PLY - yacc)
+Desarrollador: Kenny28-176
+Archivo: algoritmos/algoritmo_KennyChung.swift
+Fecha: 08-11-2026 16:41
+
+ERRORES SINTÁCTICOS (0)
+Ninguno. No se encontraron errores sintácticos.
