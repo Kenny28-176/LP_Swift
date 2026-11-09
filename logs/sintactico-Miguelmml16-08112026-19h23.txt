@@ -1,7 +1,0 @@
-Análisis sintáctico de Swift (PLY - yacc)
-Desarrollador: Miguelmml16
-Archivo: algoritmos/algoritmo_MiguelMedina.swift
-Fecha: 08-11-2026 19:23
-
-ERRORES SINTÁCTICOS (0)
-Ninguno. No se encontraron errores sintácticos.

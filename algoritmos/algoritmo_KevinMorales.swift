@@ -20,6 +20,7 @@
     }
 
 
+
     // Bucle for-in con rango semiabierto (..<) para recorrer el arreglo por índice
     print("--- Procesamiento de Ventas Diarias (..<) ---")
     for i in 0..<5 {

@@ -819,6 +819,7 @@ if __name__ == '__main__':
         f"{os.path.relpath(ruta_log_sintactico)}"
     )
 
+
     if errores_sintacticos:
         print("\nEl archivo contiene errores sintácticos.")
     else:
