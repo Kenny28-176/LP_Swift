@@ -21,6 +21,113 @@ import ply.yacc as yacc
 import lexer as lexer_module
 
 tokens = lexer_module.tokens
+# ---------------------------------------------------------------------------
+# Separación de instrucciones mediante saltos de línea
+# ---------------------------------------------------------------------------
+class LexerConSeparadores:
+    INICIOS_SENTENCIA = {
+    'VAR', 'LET', 'FUNC', 'FOR', 'WHILE', 'REPEAT',
+    'IF', 'BREAK', 'CONTINUE', 'RETURN', 'PRINT', 'SWITCH'
+    }
+
+    # Valores de operadores que indican que una expresión quedó incompleta.
+    OPERADORES_INCOMPLETOS = {
+        '=', '+=', '-=', '*=', '/=', '%=',
+        '+', '-', '*', '/', '%',
+        '==', '!=', '<', '>', '<=', '>=',
+        '&&', '||'
+    }
+
+    def __init__(self, lexer):
+        self.lexer = lexer
+        self.anterior = None
+        self.pendientes = []
+        self.lineno = 1
+        self.lexpos = 0
+
+    def input(self, codigo):
+        self.lexer.input(codigo)
+        self.anterior = None
+        self.pendientes = []
+        self.lineno = 1
+        self.lexpos = 0
+
+    @property
+    def lexpos(self):
+        return self.lexer.lexpos
+
+    @lexpos.setter
+    def lexpos(self, valor):
+        self.lexer.lexpos = valor
+    def token(self):
+        if self.pendientes:
+            tok = self.pendientes.pop(0)
+            self.anterior = tok
+            self.lineno = self.lexer.lineno
+            return tok
+
+        tok = self.lexer.token()
+
+        if tok is None:
+            self.lineno = self.lexer.lineno
+            return None
+
+        if (
+            self.anterior is not None
+            and tok.lineno > self.anterior.lineno
+            and self.anterior.type not in {'LBRACE', 'SEMICOLON'}
+        ):
+            insertar_separador = tok.type in self.INICIOS_SENTENCIA
+            token_guardado = False
+
+            if tok.type == 'ID':
+                siguiente = self.lexer.token()
+
+                self.pendientes.append(tok)
+                token_guardado = True
+
+                if siguiente is not None:
+                    self.pendientes.append(siguiente)
+
+                    # Detecta una llamada a función al inicio de una nueva línea.
+                    if siguiente.type == 'LPAREN':
+                        insertar_separador = True
+
+                    # Detecta una asignación al inicio de una nueva línea.
+                    elif str(siguiente.value) in {
+                        '=', '+=', '-=', '*=', '/=', '%='
+                    }:
+                        insertar_separador = True
+
+            if (
+                tok.type == 'RBRACE'
+                and str(self.anterior.value) in self.OPERADORES_INCOMPLETOS
+            ):
+                insertar_separador = True
+
+            if insertar_separador:
+                if not token_guardado:
+                    self.pendientes.append(tok)
+
+                separador = lex.LexToken()
+                separador.type = 'SEMICOLON'
+                separador.value = '<SALTO_LINEA>'
+                separador.lineno = self.anterior.lineno
+                separador.lexpos = (
+                    self.anterior.lexpos + len(str(self.anterior.value))
+                )
+                separador.lexer = self.lexer
+
+                self.anterior = separador
+                self.lineno = self.lexer.lineno
+                return separador
+
+            if token_guardado:
+                tok = self.pendientes.pop(0)
+
+        self.anterior = tok
+        self.lineno = self.lexer.lineno
+        return tok
 
 
 # ---------------------------------------------------------------------------
@@ -71,15 +178,68 @@ def p_vacio(p):
     '''vacio :'''
     p[0] = []
 
+def p_sentencia_error(p):
+    '''sentencia : error SEMICOLON'''
+    p[0] = ('sentencia_error',)
 # ===================== Inicio aporte: Kevin Morales ====================
-def p_sentencia_var_explicita(p):
-    '''sentencia : VAR ID COLON tipo ASSIGN expresion'''
-    p[0] = ('declaracion_var_explicita', p[2], p[4], p[6])
+
+# ---------------------------------------------------------------------------
+# 1. Estructura de datos: ARREGLOS
+# ---------------------------------------------------------------------------
+# Permite declarar arreglos indicando el tipo de sus elementos, crear
+# arreglos con valores, declarar arreglos vacíos y acceder a sus posiciones.
+
+# Reconoce el tipo de dato de un arreglo mediante corchetes.
+# Ejemplos:
+#   [Int]
+#   [String]
+#   [[Double]]
+def p_arreglo_tipo_y_literal(p):
+    '''tipo : LBRACKET tipo RBRACKET'''
+    p[0] = ('tipo_arreglo', p[2])
+
+# Reconoce los valores de un arreglo literal.
+# También diferencia los elementos de un arreglo de los pares utilizados
+# en los diccionarios.
+# Ejemplos:
+#   [10, 20, 30]
+#   ["Ana", "Luis", "Kevin"]
+def p_arreglo_literal(p):
+    '''expresion : LBRACKET elementos_corchetes RBRACKET'''
+    p[0] = ('arreglo_literal', p[2])
+
+# Permite reconocer la declaración de un arreglo vacío.
+# Ejemplo:
+#   []
+def p_arreglo_vacio(p):
+    '''expresion : LBRACKET RBRACKET'''
+    p[0] = ('arreglo_vacio',)
+
+# Permite acceder a un elemento del arreglo mediante su índice.
+# Ejemplos:
+#   numeros[0]
+#   nombres[2]
+def p_acceso_arreglo(p):
+    '''expresion : ID LBRACKET expresion RBRACKET'''
+    p[0] = ('acceso_subindice', p[1], p[3])
+
+# ---------------------------------------------------------------------------
+# 2. Estructura de control: FOR-IN
+# ---------------------------------------------------------------------------
+# Permite recorrer un rango o una colección mediante una variable
+# de iteración.
+# Ejemplos:
+#   for i in 1...5 { print(i) }
+#   for i in 0..<5 { print(i) }
 
 def p_bucle_for_in(p):
     '''sentencia : FOR ID IN rango LBRACE lista_sentencias_opt RBRACE'''
     p[0] = ('bucle_for', p[2], p[4], p[6])
 
+# Reconoce los rangos cerrados y semiabiertos utilizados en los bucles.
+#   1...5 incluye el valor inicial y el final.
+#   0..<5 incluye el inicial, pero excluye el final.
+# También permite reconocer una expresión como colección o rango.
 def p_rango(p):
     '''rango : expresion CLOSED_RANGE expresion
              | expresion HALF_OPEN_RANGE expresion
@@ -89,33 +249,36 @@ def p_rango(p):
     else:
         p[0] = ('coleccion_o_rango', p[1])
 
+# ---------------------------------------------------------------------------
+# 3. Tipo de función: FUNCIONES CON MÚLTIPLES PARÁMETROS
+# ---------------------------------------------------------------------------
+# Permite declarar funciones que reciben varios parámetros, cada uno con
+# su nombre y tipo de dato, y especificar el tipo de retorno.
+# Ejemplo:
+#   func calcular(a: Int, b: Int) -> Int {
+#       return a + b
+#   }
+# La regla parametros_opt reconoce la lista de parámetros mediante
+# las producciones gramaticales compartidas.
 def p_funcion_multiple_parametros(p):
     '''sentencia : FUNC ID LPAREN parametros_opt RPAREN ARROW tipo LBRACE lista_sentencias_opt RBRACE'''
     p[0] = ('declaracion_funcion', p[2], p[4], p[7], p[9])
 
-def p_arreglo_tipo_y_literal(p):
-    '''tipo : LBRACKET tipo RBRACKET'''
-    p[0] = ('tipo_arreglo', p[2])
+# ---------------------------------------------------------------------------
+# 4. Funcionalidad adicional: VARIABLES CON TIPO EXPLÍCITO
+# ---------------------------------------------------------------------------
+# Permite declarar variables mutables indicando explícitamente su tipo
+# de dato y asignándoles un valor inicial.
+# Ejemplos:
+#   var nombre: String = "Kevin"
+#   var edad: Int = 20
+#   var promedio: Double = 8.5
+def p_sentencia_var_explicita(p):
+    '''sentencia : VAR ID COLON tipo ASSIGN expresion'''
+    p[0] = ('declaracion_var_explicita', p[2], p[4], p[6])
 
-def p_arreglo_literal(p):
-    '''expresion : LBRACKET elementos_corchetes RBRACKET'''
-    elementos = p[2]
-
-    if all(not (isinstance(elemento, tuple)
-                and elemento[0] == 'par_diccionario')
-           for elemento in elementos):
-        p[0] = ('arreglo_literal', elementos)
-    else:
-        p[0] = ('diccionario_literal', elementos)
-
-def p_arreglo_vacio(p):
-    '''expresion : LBRACKET RBRACKET'''
-    p[0] = ('arreglo_vacio',)
-
-def p_acceso_arreglo(p):
-    '''expresion : ID LBRACKET expresion RBRACKET'''
-    p[0] = ('acceso_subindice', p[1], p[3])
 # ====================== Fin aporte: Kevin Morales ======================
+
 
 # ===================== Inicio aporte: Kenny Chung ======================
 
@@ -156,6 +319,15 @@ def p_acceso_tupla(p):
 def p_sentencia_repeat_while(p):
     '''sentencia : REPEAT LBRACE lista_sentencias_opt RBRACE WHILE expresion'''
     p[0] = ('bucle_repeat_while', p[6], p[3])
+
+
+# Recuperación de errores sintácticos en repeat-while.
+# Permite detectar un error en la condición cuando falta o está mal escrita
+# la palabra WHILE, evitando que se genere un error secundario al llegar
+# al final del archivo.
+def p_sentencia_repeat_while_error(p):
+    '''sentencia : REPEAT LBRACE lista_sentencias_opt RBRACE error SEMICOLON'''
+    p[0] = ('sentencia_error_repeat_while',)
 
 # ---------------------------------------------------------------------------
 # 3. Tipo de función: FUNCIONES CON PARÁMETROS POR DEFECTO
@@ -420,9 +592,31 @@ def p_expresion_literal(p):
                  | ID'''
     p[0] = p[1]
 
-def p_expresion_llamada(p):
-    '''expresion : ID LPAREN argumentos_opt RPAREN'''
+# Reconoce una llamada a una función con o sin argumentos.
+# Ejemplos:
+#   saludar()
+#   calcular(a: 5, b: 3)
+#   mostrarNota(notaAna)
+def p_llamada_funcion(p):
+    '''llamada_funcion : ID LPAREN argumentos_opt RPAREN'''
     p[0] = ('llamada_funcion', p[1], p[3])
+
+
+# Permite utilizar llamadas a funciones dentro de expresiones.
+# Ejemplo:
+#   var resultado = calcular(5)
+def p_expresion_llamada(p):
+    '''expresion : llamada_funcion'''
+    p[0] = p[1]
+
+
+# Permite ejecutar una llamada como instrucción independiente.
+# Ejemplos:
+#   saludar()
+#   mostrarNota(notaAna)
+def p_sentencia_llamada(p):
+    '''sentencia : llamada_funcion'''
+    p[0] = ('sentencia_llamada', p[1])
 
 def p_expresion_readline(p):
     '''expresion : READLINE LPAREN RPAREN'''
@@ -512,14 +706,26 @@ errores_sintacticos = []
 codigo_actual = ''
 
 def p_error(p):
-    if p:
-        columna = lexer_module.find_column(codigo_actual, p.lexpos)
 
-        mensaje = (
-            f"Error sintáctico: token inesperado '{p.value}' "
-            f"(tipo {p.type}) en la línea {p.lineno}, "
-            f"columna {columna}."
+    if p:
+        columna = lexer_module.find_column(
+            codigo_actual,
+            p.lexpos
         )
+
+        if p.type == 'SEMICOLON' and p.value == '<SALTO_LINEA>':
+            mensaje = (
+                f"Error sintáctico: instrucción incompleta antes "
+                f"del salto de línea en la línea {p.lineno}, "
+                f"columna {columna}."
+            )
+        else:
+            mensaje = (
+                f"Error sintáctico: token inesperado '{p.value}' "
+                f"(tipo {p.type}) en la línea {p.lineno}, "
+                f"columna {columna}."
+            )
+
     else:
         mensaje = (
             "Error sintáctico: fin de archivo inesperado. "
@@ -527,7 +733,6 @@ def p_error(p):
         )
 
     errores_sintacticos.append(mensaje)
-
 # ---------------------------------------------------------------------------
 # Generación del log sintáctico
 # ---------------------------------------------------------------------------
@@ -593,9 +798,12 @@ if __name__ == '__main__':
     lexer_sintactico = lex.lex(module=lexer_module)
     lexer_sintactico.errores = []
 
+    # Envolver el lexer para que el parser pueda separar instrucciones.
+    lexer_con_separadores = LexerConSeparadores(lexer_sintactico)
+
     resultado = parser.parse(
         codigo_actual,
-        lexer=lexer_sintactico,
+        lexer=lexer_con_separadores,
         tracking=True
     )
     ruta_log_sintactico = escribir_log_sintactico(

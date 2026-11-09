@@ -1,0 +1,10 @@
+Análisis sintáctico de Swift (PLY - yacc)
+Desarrollador: Kenny28-176
+Archivo: algoritmos/algoritmo_KennyChung_errores.swift
+Fecha: 08-11-2026 23:06
+
+ERRORES SINTÁCTICOS (4)
+Error sintáctico: token inesperado '9.5' (tipo DOUBLE) en la línea 14, columna 38.
+Error sintáctico: token inesperado ')' (tipo RPAREN) en la línea 22, columna 32.
+Error sintáctico: token inesperado ')' (tipo RPAREN) en la línea 41, columna 30.
+Error sintáctico: token inesperado '(' (tipo LPAREN) en la línea 53, columna 3.

@@ -1,9 +1,0 @@
-Análisis sintáctico de Swift (PLY - yacc)
-Desarrollador: kevin-moralesc
-Archivo: algoritmos/algoritmo_KevinMorales.swift
-Fecha: 08-11-2026 11:52
-
-ERRORES SINTÁCTICOS (3)
-Error sintáctico: token inesperado 'var' (tipo VAR) en la línea 11, columna 5.
-Error sintáctico: token inesperado 'func' (tipo FUNC) en la línea 15, columna 5.
-Error sintáctico: token inesperado '}' (tipo RBRACE) en la línea 17, columna 5.

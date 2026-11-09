@@ -1,0 +1,9 @@
+Análisis sintáctico de Swift (PLY - yacc)
+Desarrollador: kevin-moralesc
+Archivo: algoritmos/algoritmo_KevinMorales_errores.swift
+Fecha: 08-11-2026 23:05
+
+ERRORES SINTÁCTICOS (3)
+Error sintáctico: token inesperado '250' (tipo INT) en la línea 18, columna 26.
+Error sintáctico: token inesperado 'comision' (tipo ID) en la línea 26, columna 35.
+Error sintáctico: instrucción incompleta antes del salto de línea en la línea 56, columna 24.

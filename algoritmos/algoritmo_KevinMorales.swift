@@ -6,16 +6,6 @@
     var nombreTienda: String = "Tienda PoliESPOL"
     var cantidadDias: Int = 5
     var totalVentasNetas: Int = 0
-    // modificacion para el avance 2 del proeycto 
-    var totalBonos: Int = 
-    var promedioDiario: Double = 2,2 
-    var nombreEmpleado: String = 'Kevin Morales'
-
-    //funcion con error sintactico para el avance 2 del proyecto
-    func calcularBonos(bono: Int, dias: Int) -> Int {
-        return bono * dias
-    }
-
     // Estructura de Datos: Arreglos (Array)
     var ventas: [Int] = [120, 250, 180, 300, 420]
     var comisiones: [Int] = [5, 10, 8, 15, 20]
