@@ -66,3 +66,51 @@ if readLine() == nil {
 
 let inicial: Character = "M"
 print("Nota final: \(nota), bonus: \(bonus), inicial: \(inicial)")
+
+// ---------------------------------------------------------------------
+// Avance 2: closures (tipo de función asignado a Miguel Medina)
+// ---------------------------------------------------------------------
+
+// Closure con parámetros y tipo de retorno, guardado en una constante
+// cuyo tipo es una función: (Double, Double, Double) -> Double
+let calcularPromedio: (Double, Double, Double) -> Double = { (a: Double, b: Double, c: Double) -> Double in
+    return (a + b + c) / 3.0
+}
+
+// Closure con if / else if / else en su cuerpo
+let clasificar = { (valor: Double) -> String in
+    if valor >= 9.0 {
+        return "Excelente"
+    } else if valor >= 7.0 && valor < 9.0 {
+        return "Bueno"
+    } else if valor >= 5.0 {
+        return "Regular"
+    } else {
+        return "Insuficiente"
+    }
+}
+
+// Closure que omite el tipo de retorno y closure sin firma
+let mostrarNota = { (valor: Double) in
+    print("Nota:", valor)
+}
+let mensajeFinal = { return "Fin del reporte" }
+
+// Función que recibe un closure como parámetro
+func aplicarCurva(nota: Double, regla: (Double) -> Double) -> Double {
+    return regla(nota)
+}
+
+// Diccionario vacío que se llena con closures pasados como argumento
+var curvas: [String: Double] = [:]
+curvas["Ana"] = aplicarCurva(nota: 8.5, regla: { (n: Double) -> Double in return n + 0.5 })
+curvas["Luis"] = aplicarCurva(nota: 6.75, regla: { (n: Double) -> Double in
+    if n < 7.0 {
+        return n + 1.0
+    }
+    return n
+})
+
+let promedioFinal: Double = calcularPromedio(8.5, 6.75, 9.0)
+print("Promedio:", promedioFinal, "-", clasificar(promedioFinal))
+print(mensajeFinal())

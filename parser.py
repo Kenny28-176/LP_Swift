@@ -172,31 +172,118 @@ def p_sentencia_repeat_while(p):
 
 # ===================== Inicio aporte: Miguel Medina ====================
 
-# -----------------------------------------------------------------------
-# APORTE PENDIENTE: MIGUEL MEDINA
-#
-# Instrucciones:
-# Implementar las reglas sintácticas correspondientes a las siguientes
-# contribuciones, tomando como referencia el algoritmo de Miguel:
-#
-# 1. Estructura de datos: DICCIONARIOS.
-#    (Reconocer declaraciones y literales de diccionarios, incluyendo
-#    pares clave-valor y diccionarios vacíos).
-#
-# 2. Estructura de control: IF-ELSE.
-#    (Reconocer condiciones if, bloques else y estructuras else-if).
-#
-# 3. Tipo de función: CLOSURES.
-#    (Reconocer expresiones closure de Swift, respetando los parámetros,
-#    el tipo de retorno y las instrucciones de su cuerpo).
-#
-# Importante:
-# Las reglas generales que necesita el parser se encuentran
-# fuera de esta sección. No deben eliminarse ni duplicarse.
-#
-# Miguel debe implementar sus reglas utilizando los tokens
-# existentes en lexer.py, comentar cada producción y probar
-# su algoritmo completo.
+# Reglas de Miguel Medina (Miguelmml16). Solo usan tokens que ya existen en
+# lexer.py y reutilizan reglas de otras secciones sin duplicarlas:
+#   - tipo [String: Double]       -> p_tipo (reglas comunes)
+#   - let nombre: Tipo = valor    -> p_sentencia_let_explicita (Kenny)
+#   - notas[nombre]               -> p_acceso_arreglo (Kevin)
+#   - notas["Ana"] = 9.0          -> p_sentencia_reasignacion (reglas comunes)
+#   - parámetros (a: Int, b: Int) -> p_parametros_opt (reglas comunes)
+
+# ---------------------------------------------------------------------------
+# 1. Estructura de datos: DICCIONARIOS
+# ---------------------------------------------------------------------------
+# Literal de diccionario: uno o más pares clave: valor entre corchetes.
+#   ["Ana": 8.5, "Luis": 6.75, "Sofia": 9.0]
+# Los pares tienen su propia lista, así que no se pueden mezclar con
+# elementos de arreglo: [1, "a": 2] es un error sintáctico.
+def p_diccionario_literal(p):
+    '''expresion : LBRACKET pares_diccionario RBRACKET'''
+    p[0] = ('diccionario_literal', p[2])
+
+# Lista de pares separados por coma.
+def p_pares_diccionario(p):
+    '''pares_diccionario : pares_diccionario COMMA par_diccionario
+                         | par_diccionario'''
+    if len(p) == 4:
+        p[0] = p[1] + [p[3]]
+    else:
+        p[0] = [p[1]]
+
+# Un par clave: valor. La clave y el valor pueden ser cualquier expresión.
+#   "Ana": 8.5      nombre: nota * 2.0
+def p_par_diccionario(p):
+    '''par_diccionario : expresion COLON expresion'''
+    p[0] = ('par_diccionario', p[1], p[3])
+
+# Diccionario vacío:  var extras: [String: Int] = [:]
+def p_diccionario_vacio(p):
+    '''expresion : LBRACKET COLON RBRACKET'''
+    p[0] = ('diccionario_vacio',)
+
+# ---------------------------------------------------------------------------
+# 2. Estructura de control: IF / ELSE IF / ELSE
+# ---------------------------------------------------------------------------
+# if condicion { ... }
+# if condicion { ... } else { ... }
+# if condicion { ... } else if condicion { ... } else { ... }
+# La condición es una expresión (admite &&, || y !) y las llaves son
+# obligatorias, como en Swift; por eso no existe ambigüedad de "else colgante".
+def p_sentencia_if(p):
+    '''sentencia : condicional_if'''
+    p[0] = p[1]
+
+def p_condicional_if(p):
+    '''condicional_if : IF expresion LBRACE lista_sentencias_opt RBRACE bloque_else_opt'''
+    p[0] = ('if', p[2], p[4], p[6])
+
+# Parte opcional después del bloque del if:
+#   else if ...  -> otro condicional_if (permite encadenar varios else if)
+#   else { ... } -> bloque final
+#   (nada)       -> if sin else
+def p_bloque_else_opt(p):
+    '''bloque_else_opt : ELSE condicional_if
+                       | ELSE LBRACE lista_sentencias_opt RBRACE
+                       | vacio'''
+    if len(p) == 3:
+        p[0] = ('else_if', p[2])
+    elif len(p) == 5:
+        p[0] = ('else', p[3])
+    else:
+        p[0] = None
+
+# ---------------------------------------------------------------------------
+# 3. Tipo de función: CLOSURES
+# ---------------------------------------------------------------------------
+# Closure como expresión: se puede asignar a una variable o constante,
+# pasar como argumento o retornar.
+#   { (a: Int, b: Int) -> Int in return a + b }   parámetros y retorno
+#   { (nota: Double) in print(nota) }             retorno omitido
+#   { () -> String in return "Hola" }             sin parámetros
+#   { print("Hola") }                             sin firma
+def p_expresion_closure(p):
+    '''expresion : LBRACE firma_closure IN lista_sentencias_opt RBRACE
+                 | LBRACE lista_sentencias_opt RBRACE'''
+    if len(p) == 6:
+        p[0] = ('closure', p[2], p[4])
+    else:
+        p[0] = ('closure', None, p[2])
+
+# Firma del closure: parámetros entre paréntesis (pueden faltar) y,
+# opcionalmente, el tipo de retorno después de ->.
+def p_firma_closure(p):
+    '''firma_closure : LPAREN parametros_opt RPAREN ARROW tipo
+                     | LPAREN parametros_opt RPAREN'''
+    if len(p) == 6:
+        p[0] = ('firma_closure', p[2], p[5])
+    else:
+        p[0] = ('firma_closure', p[2], None)
+
+# Tipo función, para anotar variables y parámetros que guardan closures:
+#   let sumar: (Int, Int) -> Int = { ... }
+#   func aplicar(nota: Double, regla: (Double) -> Double) -> Double { ... }
+# La tercera forma comparte prefijo con el tipo tupla de p_tipo; el parser
+# decide al ver ARROW después del ')', por eso no genera conflictos.
+def p_tipo_funcion(p):
+    '''tipo : LPAREN RPAREN ARROW tipo
+            | LPAREN tipo RPAREN ARROW tipo
+            | LPAREN tipo COMMA lista_tipos RPAREN ARROW tipo'''
+    if len(p) == 5:
+        p[0] = ('tipo_funcion', [], p[4])
+    elif len(p) == 6:
+        p[0] = ('tipo_funcion', [p[2]], p[5])
+    else:
+        p[0] = ('tipo_funcion', [p[2]] + p[4], p[7])
 # ====================== Fin aporte: Miguel Medina ======================
 
 # REGLAS GRAMATICALES GENERALES Y COMPARTIDAS

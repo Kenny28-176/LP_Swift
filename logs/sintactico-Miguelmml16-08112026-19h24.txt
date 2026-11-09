@@ -1,0 +1,15 @@
+Análisis sintáctico de Swift (PLY - yacc)
+Desarrollador: Miguelmml16
+Archivo: algoritmos/algoritmo_MiguelMedina_errores.swift
+Fecha: 08-11-2026 19:24
+
+ERRORES SINTÁCTICOS (9)
+Error sintáctico: token inesperado '8.5' (tipo DOUBLE) en la línea 9, columna 38.
+Error sintáctico: token inesperado ']' (tipo RBRACKET) en la línea 13, columna 43.
+Error sintáctico: token inesperado 'aprobado' (tipo ID) en la línea 18, columna 5.
+Error sintáctico: token inesperado 'nota' (tipo ID) en la línea 25, columna 8.
+Error sintáctico: token inesperado '}' (tipo RBRACE) en la línea 27, columna 1.
+Error sintáctico: token inesperado 'return' (tipo RETURN) en la línea 31, columna 39.
+Error sintáctico: token inesperado '=' (tipo ASSIGN) en la línea 35, columna 24.
+Error sintáctico: token inesperado '}' (tipo RBRACE) en la línea 35, columna 60.
+Error sintáctico: fin de archivo inesperado. Puede faltar cerrar una expresión o un bloque.
