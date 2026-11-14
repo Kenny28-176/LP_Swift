@@ -127,9 +127,46 @@ def valor_compatible(tipo_esperado, valor, tipo_valor):
 
 
 # ===================== Inicio aporte: Kevin Morales =====================
-# Pendiente. Reglas asignadas:
-#   1. Los operandos de +, -, * y / deben ser del mismo tipo.
-#   2. Todo identificador debe estar declarado antes de usarse.
+
+# Regla 1: los operandos de una operación aritmética deben ser del mismo tipo.
+# Se comprueba en las expresiones binarias (+, -, *, /).
+# Si ambos operandos tienen tipos conocidos y son diferentes, se reporta error.
+#   10 + 5       <- correcto
+#   10 + 5.5     <- error: Int y Double son diferentes
+
+def regla_operandos_mismo_tipo(operador, tipo_izquierdo, tipo_derecho, linea):
+
+    if (tipo_izquierdo is not None and tipo_derecho is not None
+            and tipo_izquierdo != tipo_derecho):
+
+        reportar(
+            linea,
+            f"No se puede aplicar el operador '{operador}' entre tipos "
+            f"'{nombre_tipo(tipo_izquierdo)}' y "
+            f"'{nombre_tipo(tipo_derecho)}'. Se requiere conversión explícita"
+        )
+
+
+# Regla 2: todo identificador debe estar declarado antes de utilizarse.
+# Se comprueba al utilizar variables y funciones en expresiones, llamadas
+# y operaciones de reasignación.
+#   var edad: Int = 20
+#   print(edad)       <- correcto
+#   print(nombre)     <- error: identificador no declarado
+
+def regla_identificador_declarado(nombre, linea):
+
+    simbolo = tabla.buscar(nombre)
+
+    if simbolo is None:
+        reportar(
+            linea,
+            f"El identificador '{nombre}' no ha sido declarado"
+        )
+# Funciones propias de Swift que no se declaran en el programa.
+FUNCIONES_PREDEFINIDAS = ('Int', 'Double', 'String', 'Bool', 'Character',
+                          'abs', 'min', 'max', 'sqrt', 'pow')
+
 # ====================== Fin aporte: Kevin Morales =======================
 
 
@@ -223,6 +260,7 @@ def tipo_expresion(expresion, linea):
             return 'Bool'
         if expresion == 'nil':
             return None
+        regla_identificador_declarado(expresion, linea)   # Kevin: Regla 2
         return tipo_identificador(expresion)
 
     etiqueta = expresion[0]
@@ -233,6 +271,18 @@ def tipo_expresion(expresion, linea):
         tipo_derecho = tipo_expresion(derecha, linea)
 
         if operador in OPERADORES_ARITMETICOS:
+            # --- Kevin: Regla 1 ---
+            # En Swift, "precio * 2" con precio Double es válido (el 2 es
+            # un literal), así que no se reporta en ese caso.
+            literal_con_double = (
+                (tipo_izquierdo == 'Double' and isinstance(derecha, int))
+                or (tipo_derecho == 'Double' and isinstance(izquierda, int))
+            )
+            if not literal_con_double:
+                regla_operandos_mismo_tipo(
+                    operador, tipo_izquierdo, tipo_derecho, linea
+                )
+            # --- fin Kevin ---
             if tipo_izquierdo is None:
                 return tipo_derecho
             if tipo_derecho is None or tipo_izquierdo == tipo_derecho:
@@ -251,6 +301,8 @@ def tipo_expresion(expresion, linea):
 
     if etiqueta == 'llamada_funcion':
         _, nombre, argumentos = expresion
+        if nombre not in FUNCIONES_PREDEFINIDAS:
+            regla_identificador_declarado(nombre, linea)   # Kevin: Regla 2
         for argumento in argumentos:
             if (isinstance(argumento, tuple) and len(argumento) == 2
                     and argumento[0] not in LITERALES_COMPUESTOS):
@@ -265,6 +317,7 @@ def tipo_expresion(expresion, linea):
 
     if etiqueta == 'acceso_tupla':
         _, nombre, indice = expresion
+        regla_identificador_declarado(nombre, linea)       # Kevin: Regla 2
         tipo = tipo_identificador(nombre)
         if es_nodo(tipo, 'tipo_tupla') and indice < len(tipo[1]):
             return tipo[1][indice]
@@ -289,6 +342,7 @@ def tipo_expresion(expresion, linea):
 
     if etiqueta == 'acceso_subindice':
         _, nombre, indice = expresion
+        regla_identificador_declarado(nombre, linea)       # Kevin: Regla 2
         tipo = tipo_identificador(nombre)
         tipo_expresion(indice, linea)
         if es_nodo(tipo, 'tipo_arreglo'):
@@ -383,11 +437,13 @@ def analizar_sentencia(sentencia, linea):
 
     elif etiqueta == 'reasignacion':
         _, nombre, _, valor = sentencia
+        regla_identificador_declarado(nombre, linea)       # Kevin: Regla 2
         regla_constante_no_modificable(nombre, linea)
         tipo_expresion(valor, linea)
 
     elif etiqueta == 'reasignacion_subindice':
         _, nombre, indice, _, valor = sentencia
+        regla_identificador_declarado(nombre, linea)       # Kevin: Regla 2
         regla_constante_no_modificable(nombre, linea)
         tipo_expresion(indice, linea)
         tipo_expresion(valor, linea)
