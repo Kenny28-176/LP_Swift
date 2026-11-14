@@ -28,10 +28,19 @@ El analizador sintáctico utiliza los tokens del analizador léxico para comprob
 
 Cada prueba genera un log en `logs/` con el nombre `sintactico-usuarioGit-ddmmaaaa-HHhMM.txt`, que contiene los errores sintácticos encontrados durante el análisis.
 
+## Avance 3: analizador semántico
+```
+python semantico.py <archivo.swift> <usuarioGit>
+python semantico.py algoritmos/algoritmo_KennyChung_errores_semanticos.swift Kenny28-176
+```
+El analizador semántico recorre el árbol que construye el analizador sintáctico, mantiene una tabla de símbolos por ámbitos y aplica las reglas semánticas de cada integrante. Si el archivo tiene errores léxicos o sintácticos, el análisis semántico no se ejecuta hasta que se corrijan.
+
+Cada prueba genera un log en `logs/` con el nombre `semantico-usuarioGit-ddmmaaaa-HHhMM.txt`, que contiene los errores semánticos encontrados y la línea de cada uno.
 
 ## Estructura
 
 - `lexer.py`: analizador léxico. Cada integrante agrega sus tokens dentro de su sección (`Inicio aporte` / `Fin aporte`).
 - `parser.py`: analizador sintáctico. Contiene las reglas gramaticales implementadas por los integrantes.
+- `semantico.py`: analizador semántico. Cada integrante agrega sus reglas dentro de su sección (`Inicio aporte` / `Fin aporte`).
 - `algoritmos/`: algoritmos de prueba en Swift, uno por integrante.
 - `logs/`: logs de las pruebas del analizador.
