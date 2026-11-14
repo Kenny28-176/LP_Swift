@@ -1,0 +1,13 @@
+Análisis semántico de Swift
+Desarrollador: Kenny28-176
+Archivo: algoritmos/algoritmo_KennyChung_errores_semanticos.swift
+Fecha: 14-11-2026 13:34
+
+ERRORES SEMÁNTICOS (7)
+Error semántico: 'notaMinima' es una constante (let) y no se puede modificar (línea 17).
+Error semántico: 'totalParciales' es una constante (let) y no se puede modificar (línea 20).
+Error semántico: la función 'saludar' debe retornar String, pero retorna Int (línea 24).
+Error semántico: la función 'evaluar' debe retornar (Double, Bool), pero retorna (Double, Double) (línea 29).
+Error semántico: 'desde' es una constante (let) y no se puede modificar (línea 35).
+Error semántico: la función 'cuentaRegresiva' debe retornar Int, pero retorna Bool (línea 42).
+Error semántico: la función 'cuentaRegresiva' debe retornar Int, pero el return no devuelve ningún valor (línea 46).
