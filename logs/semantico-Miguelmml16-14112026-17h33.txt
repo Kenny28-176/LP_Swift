@@ -1,0 +1,12 @@
+Análisis semántico de Swift
+Desarrollador: Miguelmml16
+Archivo: algoritmos/algoritmo_MiguelMedina_errores_semanticos.swift
+Fecha: 14-11-2026 17:33
+
+ERRORES SEMÁNTICOS (6)
+Error semántico: El valor del diccionario debe ser de tipo 'Double', pero es de tipo 'String' (línea 11).
+Error semántico: La clave del diccionario debe ser de tipo 'String', pero es de tipo 'Int' (línea 14).
+Error semántico: La condición de 'if' debe ser de tipo Bool, pero es de tipo 'Int' (línea 34).
+Error semántico: La condición de 'else if' debe ser de tipo Bool, pero es de tipo 'String' (línea 40).
+Error semántico: La condición de 'while' debe ser de tipo Bool, pero es de tipo 'Int' (línea 57).
+Error semántico: La condición de 'repeat-while' debe ser de tipo Bool, pero es de tipo 'String' (línea 63).

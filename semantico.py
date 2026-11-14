@@ -225,10 +225,55 @@ def regla_tipo_retorno(valor, tipo_valor, linea):
 
 
 # ===================== Inicio aporte: Miguel Medina =====================
-# Pendiente. Reglas asignadas:
-#   1. La condición de if / else if, while y repeat-while debe ser Bool.
-#   2. Las claves y los valores de un diccionario deben coincidir con su
-#      tipo declarado [K: V].
+
+# Regla 1: la condición de if, else if, while y repeat-while debe ser Bool.
+# Swift no convierte números ni cadenas a Bool, así que una condición de
+# otro tipo es un error. La línea reportada es la de la sentencia (la del
+# if o la del repeat).
+#   if nota >= 7.0 { ... }     <- correcto
+#   if 5 { ... }               <- error: la condición es Int
+#   while "hola" { ... }       <- error: la condición es String
+def regla_condicion_bool(sentencia, tipo_condicion, linea):
+    if tipo_condicion is None or tipo_condicion == 'Bool':
+        return
+
+    reportar(
+        linea,
+        f"La condición de '{sentencia}' debe ser de tipo Bool, "
+        f"pero es de tipo '{nombre_tipo(tipo_condicion)}'"
+    )
+
+
+# Regla 2: en un diccionario declarado como [K: V], cada clave debe ser de
+# tipo K y cada valor de tipo V. Se revisa cuando una declaración var o let
+# con tipo explícito recibe un diccionario literal. Un entero sirve como
+# Double y una cadena de un carácter como Character, igual que en Swift.
+#   var edades: [String: Int] = ["Ana": 20]          <- correcto
+#   var edades: [String: Int] = ["Ana": "veinte"]    <- error en el valor
+#   var edades: [String: Int] = [7: 20]              <- error en la clave
+def regla_tipos_diccionario(tipo_declarado, diccionario, linea):
+    _, tipo_clave, tipo_valor = tipo_declarado
+
+    for _, clave, valor in diccionario[1]:
+        tipo_de_clave = tipo_expresion(clave, linea)
+        tipo_de_valor = tipo_expresion(valor, linea)
+
+        if not valor_compatible(tipo_clave, clave, tipo_de_clave):
+            reportar(
+                linea,
+                f"La clave del diccionario debe ser de tipo "
+                f"'{nombre_tipo(tipo_clave)}', pero es de tipo "
+                f"'{nombre_tipo(tipo_de_clave)}'"
+            )
+
+        if not valor_compatible(tipo_valor, valor, tipo_de_valor):
+            reportar(
+                linea,
+                f"El valor del diccionario debe ser de tipo "
+                f"'{nombre_tipo(tipo_valor)}', pero es de tipo "
+                f"'{nombre_tipo(tipo_de_valor)}'"
+            )
+
 # ====================== Fin aporte: Miguel Medina =======================
 
 
@@ -404,15 +449,16 @@ def analizar_funcion(nombre, parametros, tipo_retorno, cuerpo, linea):
     tabla.cerrar_ambito()
 
 
-def analizar_if(sentencia, linea):
+def analizar_if(sentencia, linea, palabra='if'):
     _, condicion, cuerpo, bloque_else = sentencia
-    tipo_expresion(condicion, linea)
+    tipo_condicion = tipo_expresion(condicion, linea)
+    regla_condicion_bool(palabra, tipo_condicion, linea)   # Miguel: Regla 1
     analizar_bloque(cuerpo)
 
     if bloque_else is None:
         return
     if bloque_else[0] == 'else_if':
-        analizar_if(bloque_else[1], linea)
+        analizar_if(bloque_else[1], linea, 'else if')
     else:
         analizar_bloque(bloque_else[1])
 
@@ -422,7 +468,12 @@ def analizar_sentencia(sentencia, linea):
 
     if etiqueta in ('declaracion_var_explicita', 'declaracion_let_explicita'):
         _, nombre, tipo, valor = sentencia
-        tipo_expresion(valor, linea)
+
+        if (es_nodo(tipo, 'tipo_diccionario')
+                and es_nodo(valor, 'diccionario_literal')):
+            regla_tipos_diccionario(tipo, valor, linea)    # Miguel: Regla 2
+        else:
+            tipo_expresion(valor, linea)
 
         if etiqueta == 'declaracion_let_explicita':
             tabla.declarar(nombre, tipo, 'constante', linea)
@@ -472,14 +523,16 @@ def analizar_sentencia(sentencia, linea):
 
     elif etiqueta == 'bucle_while':
         _, condicion, cuerpo = sentencia
-        tipo_expresion(condicion, linea)
+        tipo_condicion = tipo_expresion(condicion, linea)
+        regla_condicion_bool('while', tipo_condicion, linea)   # Miguel: Regla 1
         analizar_bloque(cuerpo)
 
     elif etiqueta == 'bucle_repeat_while':
         # La condición va después del bloque y no ve lo declarado dentro de él.
         _, condicion, cuerpo = sentencia
         analizar_bloque(cuerpo)
-        tipo_expresion(condicion, linea)
+        tipo_condicion = tipo_expresion(condicion, linea)
+        regla_condicion_bool('repeat-while', tipo_condicion, linea)   # Miguel: Regla 1
 
     elif etiqueta == 'bucle_for':
         _, variable, rango, cuerpo = sentencia
