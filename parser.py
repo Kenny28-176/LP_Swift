@@ -159,6 +159,8 @@ def p_lista_sentencias_opt(p):
                             | vacio'''
     p[0] = p[1]
 
+# Cada sentencia se guarda junto con la línea donde empieza: (línea, sentencia).
+# El analizador semántico usa esa línea para ubicar sus errores.
 def p_lista_sentencias(p):
     '''lista_sentencias : lista_sentencias sentencia
                         | lista_sentencias SEMICOLON
@@ -168,11 +170,11 @@ def p_lista_sentencias(p):
         if p.slice[2].type == 'SEMICOLON':
             p[0] = p[1]
         else:
-            p[0] = p[1] + [p[2]]
+            p[0] = p[1] + [(p.lineno(2), p[2])]
     elif p.slice[1].type == 'SEMICOLON':
         p[0] = []
     else:
-        p[0] = [p[1]]
+        p[0] = [(p.lineno(1), p[1])]
 
 def p_vacio(p):
     '''vacio :'''
