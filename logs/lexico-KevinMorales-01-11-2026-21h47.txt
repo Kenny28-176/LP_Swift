@@ -1,7 +1,7 @@
 Análisis léxico de Swift (PLY)
 Desarrollador: KevinMorales
 Archivo: algoritmos/algoritmo_KevinMorales.swift
-Fecha: 14-11-2026 21:47
+Fecha: 01-11-2026 21:47
 
 TOKENS RECONOCIDOS (204)
    #  Línea  Columna  Token             Lexema
