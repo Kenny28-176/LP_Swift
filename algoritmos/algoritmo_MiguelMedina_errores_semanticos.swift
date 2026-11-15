@@ -1,9 +1,9 @@
 // Algoritmo de prueba con errores semánticos - Miguel Medina
-// Avance 3: variante de algoritmo_MiguelMedina.swift con seis errores
+// Avance 3: variante de algoritmo_MiguelMedina.swift con ocho errores
 // semánticos intencionales en las dos reglas de Miguel:
 // 1. La condición de if, else if, while y repeat-while debe ser Bool.
 // 2. Las claves y los valores de un diccionario deben coincidir con su
-//    tipo declarado [K: V].
+//    tipo declarado [K: V], al declararlo y al asignar por subíndice.
 // Cada error está marcado con un comentario ERROR para comprobar que el
 // analizador semántico lo detecta y lo registra en el log.
 
@@ -69,6 +69,13 @@ while puntos > 0 {
 
 var curvas: [String: Double] = ["Ana": 9, "Luis": 7.5]
 let iniciales: [Character: Int] = ["A": 1, "L": 2]
+curvas["Sofia"] = 8
+
+// ERROR 7 (diccionario): el valor asignado es String y debe ser Double
+curvas["Ana"] = "nueve"
+
+// ERROR 8 (diccionario): la clave es Int y las claves deben ser String
+curvas[3] = 8.0
 
 let clasificar = { (valor: Double) -> String in
     if valor >= 9.0 {

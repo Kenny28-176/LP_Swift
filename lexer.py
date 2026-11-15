@@ -183,6 +183,22 @@ def t_ID(t):
     return t
 
 
+# Identificador entre acentos graves: permite usar una palabra reservada
+# como nombre, por ejemplo  let `class`: String = "A".  Nunca es reservado.
+def t_ID_ACENTO_GRAVE(t):
+    r'`[a-zA-Z_][a-zA-Z0-9_]*`'
+    t.type = 'ID'
+    return t
+
+
+# Parámetro implícito de un closure: $0, $1, ...
+#   let dobles = numeros.map { $0 * 2 }
+def t_ID_PARAMETRO_IMPLICITO(t):
+    r'\$[0-9]+'
+    t.type = 'ID'
+    return t
+
+
 # DOUBLE va antes que INT; si no, '3.14' se partiría en INT DOT INT.
 def t_DOUBLE(t):
     r'\d+\.\d+'

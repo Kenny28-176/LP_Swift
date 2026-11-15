@@ -245,34 +245,58 @@ def regla_condicion_bool(sentencia, tipo_condicion, linea):
 
 
 # Regla 2: en un diccionario declarado como [K: V], cada clave debe ser de
-# tipo K y cada valor de tipo V. Se revisa cuando una declaración var o let
-# con tipo explícito recibe un diccionario literal. Un entero sirve como
-# Double y una cadena de un carácter como Character, igual que en Swift.
-#   var edades: [String: Int] = ["Ana": 20]          <- correcto
-#   var edades: [String: Int] = ["Ana": "veinte"]    <- error en el valor
-#   var edades: [String: Int] = [7: 20]              <- error en la clave
-def regla_tipos_diccionario(tipo_declarado, diccionario, linea):
+# tipo K y cada valor de tipo V. Se revisa en dos casos:
+#   - una declaración var o let con tipo explícito que recibe un literal;
+#   - una asignación por subíndice sobre un diccionario ya declarado.
+# Un entero sirve como Double y una cadena de un carácter como Character,
+# igual que en Swift.
+#   var precios: [String: Int] = ["agua": 1]      <- correcto
+#   var precios: [String: Int] = ["agua": "uno"]  <- error en el valor
+#   var precios: [String: Int] = [7: 1]           <- error en la clave
+#   precios["jugo"] = "dos"                       <- error en el valor
+#   precios[3] = 2                                <- error en la clave
+def revisar_par_diccionario(tipo_declarado, clave, tipo_de_clave,
+                            valor, tipo_de_valor, linea):
     _, tipo_clave, tipo_valor = tipo_declarado
 
+    if not valor_compatible(tipo_clave, clave, tipo_de_clave):
+        reportar(
+            linea,
+            f"La clave del diccionario debe ser de tipo "
+            f"'{nombre_tipo(tipo_clave)}', pero es de tipo "
+            f"'{nombre_tipo(tipo_de_clave)}'"
+        )
+
+    if not valor_compatible(tipo_valor, valor, tipo_de_valor):
+        reportar(
+            linea,
+            f"El valor del diccionario debe ser de tipo "
+            f"'{nombre_tipo(tipo_valor)}', pero es de tipo "
+            f"'{nombre_tipo(tipo_de_valor)}'"
+        )
+
+
+# Declaración con literal: var precios: [String: Int] = ["agua": 1]
+def regla_tipos_diccionario(tipo_declarado, diccionario, linea):
     for _, clave, valor in diccionario[1]:
-        tipo_de_clave = tipo_expresion(clave, linea)
-        tipo_de_valor = tipo_expresion(valor, linea)
+        revisar_par_diccionario(
+            tipo_declarado,
+            clave, tipo_expresion(clave, linea),
+            valor, tipo_expresion(valor, linea),
+            linea
+        )
 
-        if not valor_compatible(tipo_clave, clave, tipo_de_clave):
-            reportar(
-                linea,
-                f"La clave del diccionario debe ser de tipo "
-                f"'{nombre_tipo(tipo_clave)}', pero es de tipo "
-                f"'{nombre_tipo(tipo_de_clave)}'"
-            )
 
-        if not valor_compatible(tipo_valor, valor, tipo_de_valor):
-            reportar(
-                linea,
-                f"El valor del diccionario debe ser de tipo "
-                f"'{nombre_tipo(tipo_valor)}', pero es de tipo "
-                f"'{nombre_tipo(tipo_de_valor)}'"
-            )
+# Asignación por subíndice: precios["jugo"] = 2. Si la variable no es un
+# diccionario (por ejemplo, un arreglo), esta regla no aplica.
+def regla_asignacion_diccionario(nombre, clave, tipo_de_clave,
+                                 valor, tipo_de_valor, linea):
+    tipo_declarado = tipo_identificador(nombre)
+
+    if es_nodo(tipo_declarado, 'tipo_diccionario'):
+        revisar_par_diccionario(
+            tipo_declarado, clave, tipo_de_clave, valor, tipo_de_valor, linea
+        )
 
 # ====================== Fin aporte: Miguel Medina =======================
 
@@ -496,8 +520,11 @@ def analizar_sentencia(sentencia, linea):
         _, nombre, indice, _, valor = sentencia
         regla_identificador_declarado(nombre, linea)       # Kevin: Regla 2
         regla_constante_no_modificable(nombre, linea)
-        tipo_expresion(indice, linea)
-        tipo_expresion(valor, linea)
+        tipo_indice = tipo_expresion(indice, linea)
+        tipo_valor = tipo_expresion(valor, linea)
+        regla_asignacion_diccionario(                      # Miguel: Regla 2
+            nombre, indice, tipo_indice, valor, tipo_valor, linea
+        )
 
     elif etiqueta == 'impresion':
         for expresion in sentencia[1]:
