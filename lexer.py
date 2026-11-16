@@ -215,7 +215,7 @@ def t_INT(t):
 
 
 def t_STRING(t):
-    r'"([^"\n]|\\.)*"'
+    r'"([^"\\\n]|\\.)*"'
     return t
 
 
@@ -223,7 +223,7 @@ def t_STRING(t):
 # comilla de cierre. Solo se prueba si STRING no coincidió, y consume el
 # resto de la línea para no generar errores en cadena con su contenido.
 def t_CADENA_SIN_CERRAR(t):
-    r'"[^"\n]*'
+    r'"([^"\\\n]|\\.)*\\?'
     reportar_error_lexico(t, "cadena sin cerrar")
 
 
