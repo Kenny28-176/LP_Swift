@@ -191,12 +191,14 @@ def t_ID_ACENTO_GRAVE(t):
     return t
 
 
-# Parámetro implícito de un closure: $0, $1, ...
-#   let dobles = numeros.map { $0 * 2 }
-def t_ID_PARAMETRO_IMPLICITO(t):
-    r'\$[0-9]+'
-    t.type = 'ID'
-    return t
+# Número mal formado: un número pegado a letras (12abc, 3.5kg) o con más de
+# un punto decimal (3.14.15). Va antes que DOUBLE e INT para que el lexema
+# completo se reporte como un solo error y no se parta en varios tokens.
+# No afecta a los rangos (1...5, 0..<n) porque ahí no hay un dígito
+# inmediatamente después del primer punto.
+def t_NUMERO_MAL_FORMADO(t):
+    r'\d+(\.\d+){2,}|\d+(\.\d+)?[a-zA-Z_][a-zA-Z0-9_]*'
+    reportar_error_lexico(t, f"número mal formado '{t.value}'")
 
 
 # DOUBLE va antes que INT; si no, '3.14' se partiría en INT DOT INT.
@@ -215,6 +217,22 @@ def t_INT(t):
 def t_STRING(t):
     r'"([^"\n]|\\.)*"'
     return t
+
+
+# Cadena sin cerrar: comillas que abren y llegan al fin de la línea sin la
+# comilla de cierre. Solo se prueba si STRING no coincidió, y consume el
+# resto de la línea para no generar errores en cadena con su contenido.
+def t_CADENA_SIN_CERRAR(t):
+    r'"[^"\n]*'
+    reportar_error_lexico(t, "cadena sin cerrar")
+
+
+def reportar_error_lexico(t, descripcion):
+    columna = find_column(t.lexer.lexdata, t.lexpos)
+    t.lexer.errores.append(
+        f"Error léxico: {descripcion} "
+        f"en la línea {t.lineno}, columna {columna}."
+    )
 # ====================== Fin aporte: Miguel Medina =======================
 
 # ---------------------------------------------------------------------------
