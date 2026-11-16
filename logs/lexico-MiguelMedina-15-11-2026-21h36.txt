@@ -1,0 +1,139 @@
+Análisis léxico de Swift (PLY)
+Desarrollador: MiguelMedina
+Archivo: algoritmos/algoritmo_MiguelMedina_errores_lexicos.swift
+Fecha: 15-11-2026 21:36
+
+TOKENS RECONOCIDOS (125)
+   #  Línea  Columna  Token             Lexema
+   1      7        1  VAR               var
+   2      7        5  ID                notas
+   3      7       10  COLON             :
+   4      7       12  LBRACKET          [
+   5      7       13  TYPE_STRING       String
+   6      7       19  COLON             :
+   7      7       21  TYPE_DOUBLE       Double
+   8      7       27  RBRACKET          ]
+   9      7       29  ASSIGN            =
+  10      7       31  LBRACKET          [
+  11      7       32  STRING            "Ana"
+  12      7       37  COLON             :
+  13      7       39  DOUBLE            8.5
+  14      7       42  COMMA             ,
+  15      7       44  STRING            "Luis"
+  16      7       50  COLON             :
+  17      7       52  DOUBLE            6.75
+  18      7       56  COMMA             ,
+  19      7       58  STRING            "Sofia"
+  20      7       65  COLON             :
+  21      7       67  DOUBLE            9.0
+  22      7       70  RBRACKET          ]
+  23      8        1  LET               let
+  24      8        5  ID                nombre
+  25      8       11  COLON             :
+  26      8       13  TYPE_STRING       String
+  27      8       20  ASSIGN            =
+  28      8       22  READLINE          readLine
+  29      8       30  LPAREN            (
+  30      8       31  RPAREN            )
+  31      8       33  NIL_COALESCING    ??
+  32      8       36  STRING            "Ana"
+  33      9        1  LET               let
+  34      9        5  ID                nota
+  35      9        9  COLON             :
+  36      9       11  TYPE_DOUBLE       Double
+  37      9       18  ASSIGN            =
+  38      9       20  ID                notas
+  39      9       25  LBRACKET          [
+  40      9       26  ID                nombre
+  41      9       32  RBRACKET          ]
+  42      9       34  NIL_COALESCING    ??
+  43      9       37  DOUBLE            0.0
+  44     10        1  VAR               var
+  45     10        5  ID                bonus
+  46     10       10  COLON             :
+  47     10       12  TYPE_INT          Int
+  48     10       16  ASSIGN            =
+  49     10       18  INT               0
+  50     10       22  INT               2
+  51     12        1  IF                if
+  52     12        4  ID                nota
+  53     12        9  GE                >=
+  54     12       12  DOUBLE            7.0
+  55     12       18  ID                nota
+  56     12       23  LE                <=
+  57     12       26  DOUBLE            10.0
+  58     12       31  LBRACE            {
+  59     13        5  PRINT             print
+  60     13       10  LPAREN            (
+  61     13       11  STRING            "Aprobado"
+  62     13       21  RPAREN            )
+  63     14        1  RBRACE            }
+  64     14        3  ELSE              else
+  65     14        8  LBRACE            {
+  66     15        5  PRINT             print
+  67     15       10  LPAREN            (
+  68     15       11  STRING            "Reprobado"
+  69     15       22  RPAREN            )
+  70     16        1  RBRACE            }
+  71     18        1  VAR               var
+  72     18        5  ID                puntos
+  73     18       11  COLON             :
+  74     18       13  TYPE_INT          Int
+  75     18       17  ASSIGN            =
+  76     18       19  INT               10
+  77     19        1  ID                puntos
+  78     19        8  PLUS_ASSIGN       +=
+  79     19       12  INT               5
+  80     20        1  LET               let
+  81     20        5  ID                promedio
+  82     20       13  COLON             :
+  83     20       15  TYPE_DOUBLE       Double
+  84     20       22  ASSIGN            =
+  85     20       24  LPAREN            (
+  86     20       25  DOUBLE            8.5
+  87     20       29  PLUS              +
+  88     20       37  RPAREN            )
+  89     20       39  DIVIDE            /
+  90     20       41  DOUBLE            3.0
+  91     22        1  LET               let
+  92     22        5  ID                clasificar
+  93     22       16  ASSIGN            =
+  94     22       18  LBRACE            {
+  95     22       20  LPAREN            (
+  96     22       21  ID                valor
+  97     22       26  COLON             :
+  98     22       28  TYPE_DOUBLE       Double
+  99     22       34  RPAREN            )
+ 100     22       36  ARROW             ->
+ 101     22       39  TYPE_STRING       String
+ 102     22       46  IN                in
+ 103     23        5  IF                if
+ 104     23        8  ID                valor
+ 105     23       14  GE                >=
+ 106     23       17  DOUBLE            9.0
+ 107     23       21  LBRACE            {
+ 108     24        9  RETURN            return
+ 109     24       16  STRING            "Excelente"
+ 110     25        5  RBRACE            }
+ 111     27        5  RETURN            return
+ 112     28        1  RBRACE            }
+ 113     30        1  PRINT             print
+ 114     30        6  LPAREN            (
+ 115     30        7  STRING            "Promedio:"
+ 116     30       18  COMMA             ,
+ 117     30       20  ID                promedio
+ 118     30       28  COMMA             ,
+ 119     30       30  STRING            "-"
+ 120     30       33  COMMA             ,
+ 121     30       35  ID                clasificar
+ 122     30       45  LPAREN            (
+ 123     30       46  ID                promedio
+ 124     30       54  RPAREN            )
+ 125     30       55  RPAREN            )
+
+ERRORES LÉXICOS (5)
+Error léxico: carácter no reconocido '@' en la línea 10, columna 20.
+Error léxico: carácter no reconocido '#' en la línea 12, columna 16.
+Error léxico: carácter no reconocido '~' en la línea 19, columna 11.
+Error léxico: número mal formado '6.75.2' en la línea 20, columna 31.
+Error léxico: cadena sin cerrar en la línea 27, columna 12.

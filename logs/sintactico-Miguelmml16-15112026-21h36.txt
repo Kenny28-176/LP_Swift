@@ -1,0 +1,9 @@
+Análisis sintáctico de Swift (PLY - yacc)
+Desarrollador: Miguelmml16
+Archivo: algoritmos/algoritmo_MiguelMedina_errores_lexicos.swift
+Fecha: 15-11-2026 21:36
+
+ERRORES SINTÁCTICOS (3)
+Error sintáctico: token inesperado '2' (tipo INT) en la línea 10, columna 22.
+Error sintáctico: token inesperado 'nota' (tipo ID) en la línea 12, columna 18.
+Error sintáctico: token inesperado ')' (tipo RPAREN) en la línea 20, columna 37.

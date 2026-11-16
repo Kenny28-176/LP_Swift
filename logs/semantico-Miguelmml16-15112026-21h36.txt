@@ -1,0 +1,6 @@
+Análisis semántico de Swift
+Desarrollador: Miguelmml16
+Archivo: algoritmos/algoritmo_MiguelMedina_errores_lexicos.swift
+Fecha: 15-11-2026 21:36
+
+No se realizó el análisis semántico: el archivo tiene 8 errores léxicos o sintácticos.
