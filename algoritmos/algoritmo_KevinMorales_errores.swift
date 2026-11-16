@@ -1,9 +1,8 @@
 // Algoritmo de prueba con errores sintácticos - Kevin Morales
-// Avance 2: variante de algoritmo_KevinMorales.swift con tres errores
-// sintácticos intencionales (arreglo, función, for-in y asignación).
+// Avance 2: variante de algoritmo_KevinMorales.swift con cuatro errores
+// sintácticos intencionales (arreglo, función, asignación y for-in).
 // Cada uno está marcado con un comentario ERROR para comprobar que
 // el analizador sintáctico los detecta y los registra en el log.
-
 
 // Declaración de variables mutables con tipo explícito (var)
 
@@ -58,6 +57,13 @@ for meta in 1...3 {
     print("Meta alcanzada:", meta, "bono otorgado:", bonoExtra)
 }
 
+
+// Bucle for-in con error
+
+// ERROR 4 (for-in): falta la palabra reservada in.
+for ronda 1...2 {
+    print("Ronda:", ronda)
+}
 
 // Cálculo final y llamadas a funciones
 

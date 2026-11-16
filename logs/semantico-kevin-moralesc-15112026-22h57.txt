@@ -1,0 +1,11 @@
+Análisis semántico de Swift
+Desarrollador: kevin-moralesc
+Archivo: algoritmos/algoritmo_KevinMorales_errores_semanticos.swift
+Fecha: 15-11-2026 22:57
+
+ERRORES SEMÁNTICOS (5)
+Error semántico: No se puede aplicar el operador '+' entre tipos 'Int' y 'Double'. Se requiere conversión explícita (línea 19).
+Error semántico: No se puede aplicar el operador '*' entre tipos 'Int' y 'Double'. Se requiere conversión explícita (línea 22).
+Error semántico: No se puede aplicar el operador '/' entre tipos 'Double' y 'Int'. Se requiere conversión explícita (línea 26).
+Error semántico: El identificador 'codigoDescuento' no ha sido declarado (línea 29).
+Error semántico: El identificador 'nombreCliente' no ha sido declarado (línea 32).

@@ -1,0 +1,49 @@
+Análisis léxico de Swift (PLY)
+Desarrollador: KevinMorales
+Archivo: algoritmos/algoritmo_KevinMorales_errores_lexicos.swift
+Fecha: 15-11-2026 22:54
+
+TOKENS RECONOCIDOS (37)
+   #  Línea  Columna  Token             Lexema
+   1      5        1  VAR               var
+   2      5        5  ID                nombreTienda
+   3      5       17  COLON             :
+   4      5       19  TYPE_STRING       String
+   5      5       26  ASSIGN            =
+   6      5       28  STRING            "Tienda PoliESPOL"
+   7      6        1  VAR               var
+   8      6        5  ID                cantidadDias
+   9      6       17  COLON             :
+  10      6       19  TYPE_INT          Int
+  11      6       23  ASSIGN            =
+  12      6       25  INT               5
+  13      9        1  VAR               var
+  14      9        5  ID                totalVentas
+  15      9       16  COLON             :
+  16      9       18  TYPE_INT          Int
+  17      9       22  ASSIGN            =
+  18      9       24  INT               0
+  19     12        1  VAR               var
+  20     12        5  ID                comision
+  21     12       13  COLON             :
+  22     12       15  TYPE_INT          Int
+  23     12       19  ASSIGN            =
+  24     12       21  INT               10
+  25     15        1  VAR               var
+  26     15        5  ID                potencia
+  27     15       13  COLON             :
+  28     15       15  TYPE_INT          Int
+  29     15       19  ASSIGN            =
+  30     15       21  INT               2
+  31     15       25  INT               3
+  32     17        1  PRINT             print
+  33     17        6  LPAREN            (
+  34     17        7  STRING            "Tienda:"
+  35     17       16  COMMA             ,
+  36     17       18  ID                nombreTienda
+  37     17       30  RPAREN            )
+
+ERRORES LÉXICOS (3)
+Error léxico: carácter no reconocido '#' en la línea 9, columna 26.
+Error léxico: carácter no reconocido '@' en la línea 12, columna 24.
+Error léxico: carácter no reconocido '^' en la línea 15, columna 23.
