@@ -30,6 +30,10 @@ class TablaSimbolos:
     # constante o funcion) y la línea donde se declaró.
     def __init__(self):
         self.ambitos = [{}]
+        # Todo lo que se declaró durante el análisis, con el nivel de su
+        # ámbito (0 es el global). Los ámbitos se descartan al cerrarse, así
+        # que la interfaz usa esta lista para mostrar la tabla de símbolos.
+        self.historial = []
 
     def abrir_ambito(self):
         self.ambitos.append({})
@@ -43,6 +47,9 @@ class TablaSimbolos:
             'categoria': categoria,
             'linea': linea,
         }
+        self.historial.append(
+            (nombre, tipo, categoria, linea, len(self.ambitos) - 1)
+        )
 
     # Busca desde el ámbito más interno hacia el global.
     def buscar(self, nombre):
@@ -600,6 +607,7 @@ def analizar_sentencia(sentencia, linea):
 # lista de errores semánticos.
 def analizar(arbol):
     tabla.ambitos = [{}]
+    tabla.historial = []
     errores_semanticos.clear()
     funciones_abiertas.clear()
 
